@@ -1,18 +1,19 @@
 import Link from "next/link"
 
+interface ButtonProps {
+  src: string
+  className?: string
+  href: string
+  children: React.ReactNode
+  onClick?: () => void
+}
 export default function ButtonCustom({
   children,
   src,
   className = "bg-secondary border-[#132C92] text-white font-neuBold",
   href,
   onClick,
-}: {
-  src: string
-  className?: string
-  href: string
-  children: React.ReactNode
-  onClick?: () => void
-}) {
+}: ButtonProps) {
   return (
     <Link href={href}>
       <button

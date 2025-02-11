@@ -1,16 +1,13 @@
 import Link from "next/link"
 
-export default function IconBox({
-  url,
-  icon,
-  name,
-  color,
-}: {
+type IconBoxType = {
   url: string
   icon: string
   name: string
   color: string
-}) {
+}
+
+export default function IconBox({ url, icon, name, color }: IconBoxType) {
   return (
     <Link href={url} target="_blank">
       <button

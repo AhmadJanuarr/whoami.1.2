@@ -2,7 +2,7 @@ import ButtonCustom from "@/components/Button"
 
 export function HeaderProjectsDetail({ demo, github }: { demo: string; github: string }) {
   return (
-    <div className="sticky left-0 top-0 z-30 flex w-full justify-between bg-white py-2">
+    <div className="sticky left-0 top-0 z-30 flex w-full justify-between bg-white py-2 dark:bg-slate-900">
       <div className="flex items-center gap-3 pl-4">
         <img
           src="/img/picture.jpg"
@@ -21,7 +21,7 @@ export function HeaderProjectsDetail({ demo, github }: { demo: string; github: s
         <ButtonCustom
           href={github}
           src="/svg/GitHub.svg"
-          className="border-[#D9D9D9] bg-[#FAFAFA] font-neuMedium text-[11px]"
+          className="border-[#D9D9D9] bg-[#FAFAFA] font-neuMedium text-[11px] dark:text-black"
         >
           Github
         </ButtonCustom>

@@ -1,6 +1,12 @@
 import Link from "next/link"
 
-export default function FooterColumn({ title, links, url }: { title: string; links: string[]; url: string[] }) {
+type FooterProps = {
+  title: string
+  links: string[]
+  url: string[]
+}
+
+export default function FooterColumn({ title, links, url }: FooterProps) {
   return (
     <div>
       <h6 className="mb-4 font-neuBold uppercase">{title}</h6>
@@ -13,7 +19,7 @@ export default function FooterColumn({ title, links, url }: { title: string; lin
               passHref
               target={["/", "/about", "/contact", "/projects", "/uses"].includes(url[index]) ? "_self" : "_blank"}
             >
-              <li className="mb-5 cursor-pointer font-neuBook text-[13px] tracking-wider text-[#444444] hover:underline">
+              <li className="mb-5 cursor-pointer font-neuBook text-[13px] tracking-wider text-[#444444] hover:underline dark:text-white">
                 {item}
               </li>
             </Link>

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Container } from ".."
-import ButtonCustom from "../../components/Button"
+import ButtonCustom from "@/components/Button"
 
 export default function NotFoundPage() {
   return (

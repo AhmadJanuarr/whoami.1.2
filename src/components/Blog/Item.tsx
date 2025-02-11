@@ -16,10 +16,10 @@ export default function BlogItem() {
               className="h-full w-full rounded-lg object-cover"
             />
           </div>
-          <div className="paragraph items-center">
+          <div className="paragraph items-center dark:text-white">
             <h1 className="font-neuBold">{item.title}</h1>
             <p className="pb-2">{item.description.slice(0, 50).concat("...")}</p>
-            <div className="flex gap-5 text-[#444444]">
+            <div className="fKlex gap-5 text-[#444444] dark:text-white">
               <p className="font-neuBook">{item.dateCreated}</p>
               <p className="font-neuBook">{item.views} views</p>
             </div>

@@ -34,7 +34,8 @@ export default function Header() {
               width={30}
               height={30}
               alt="menu toggle"
-              className="h-auto w-auto dark:brightness-0"
+              className="h-auto w-auto dark:brightness-0
+              "
             />
           </button>
         </div>

@@ -2,7 +2,7 @@ import Image from "next/image"
 import StarContainer from "./Star"
 import useSWR from "swr"
 import Link from "next/link"
-import SkeletonCard from "../Skeleton/SkeletonCard"
+import SkeletonCard from "@/components/Skeleton/SkeletonCard"
 import { ProjectsType } from "@/types/projects.type"
 import { fetching } from "@/lib/swr/fetch"
 import { useRouter } from "next/router"
@@ -27,7 +27,7 @@ export default function CardProject() {
                     "--color": color,
                   } as React.CSSProperties
                 }
-                className="group flex cursor-pointer gap-3 rounded-lg py-3 pl-4 transition-all duration-75 hover:bg-[var(--color)] lg:py-4"
+                className="group flex cursor-pointer gap-3 rounded-lg py-3 pl-4 transition-all duration-75 hover:bg-[var(--color)]  dark:hover:text-black lg:py-4"
               >
                 <div className="relative">
                   <Image
@@ -39,7 +39,7 @@ export default function CardProject() {
                     className="rounded-lg object-cover transition-all duration-75 group-hover:scale-105"
                   />
                 </div>
-                <div className="w-full">
+                <div className="w-full ">
                   <div className="flex items-center gap-2">
                     <h1 className="font-neuBold text-[14px] md:text-[18px]">{title}</h1>
                     <StarContainer>{star}</StarContainer>
@@ -48,7 +48,7 @@ export default function CardProject() {
                     {description.slice(0, screen.width < 660 ? 50 : 100)}
                     ...
                   </p>
-                  <p className="font-neubook text-[11px] text-[#444444] md:text-[14px]">{date}</p>
+                  <p className="font-neubook text-[11px] md:text-[14px]">{date}</p>
                 </div>
               </Link>
             ))}

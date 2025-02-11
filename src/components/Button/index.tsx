@@ -18,7 +18,7 @@ export default function ButtonCustom({
     <Link href={href}>
       <button
         onClick={onClick}
-        className={`flex justify-center gap-2 rounded-[10px] border px-2 py-1 md:px-3 md:py-2  md:text-[16px] ${className} items-center tracking-wider transition-transform duration-300 hover:scale-105`}
+        className={`flex justify-center gap-2 rounded-[10px]  px-2 py-1 md:px-3 md:py-2  md:text-[16px] ${className} items-center tracking-wider transition-transform duration-300 hover:scale-105`}
       >
         <div className="relative">
           <img

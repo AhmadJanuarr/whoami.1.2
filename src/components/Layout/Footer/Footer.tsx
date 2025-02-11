@@ -1,6 +1,6 @@
 import FooterColumn from "./FooterColumn"
-import SosialMediaIcon from "../../Icon"
-import ButtonCustom from "../../Button"
+import SosialMediaIcon from "@/components/Icon"
+import ButtonCustom from "@/components/Button"
 
 const NAV_ITEMS = [
   {

@@ -1,6 +1,8 @@
+# whoami.1.2
+
 <img src="public/img/portofolio.png"/>
 
-# 🎨 Portofolio Website
+# 🎨 Portofolio Website 
 
 <p>Welcome to my GitHub portfolio! Here, you will find projects that reflect my interests and expertise in Front End Development. Each project featured is the result of learning, experimenting, and implementing modern technologies, especially in interactive web application development.</p>
 
@@ -10,7 +12,7 @@
 
 ## 💻 Technology Used
 
-- **JavaScript / TypeScript**
+- **TypeScript**
 - **Next.js (14.2.14)**
 - **React Hooks** - `useState`, `useEffect`, `useContext`, `useReducer`
 - **Tailwind CSS**

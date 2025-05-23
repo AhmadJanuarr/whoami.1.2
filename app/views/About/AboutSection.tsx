@@ -82,7 +82,7 @@ export function AboutSection() {
       </div>
 
       <div className="relative w-full overflow-hidden px-5 py-20">
-        <div className="absolute left-0 top-0 w-full md:left-4 lg:left-[355px] xl:left-[540px]">
+        <div className="absolute left-0 top-0 hidden w-full md:left-4 lg:left-[355px] lg:block xl:left-[540px]">
           <AboutTrackPattern />
         </div>
         {/* Section 1 */}

@@ -40,7 +40,7 @@ export const HeaderWrapper = () => {
       <div className="grid grid-cols-2 items-center border-b border-borderPrimary px-5 py-3 text-[14px] text-textPrimary lg:grid-cols-[200px_1fr_200px] lg:px-3">
         <div className="flex justify-start">
           <div className="flex items-center gap-2">
-            <img src="/icons/favicon.ico" alt="logo" className="size-8" />
+            <img src="/icons/favicon.png" alt="logo" className="size-8" />
           </div>
         </div>
 

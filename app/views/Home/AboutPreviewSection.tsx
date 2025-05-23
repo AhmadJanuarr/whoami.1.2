@@ -13,7 +13,7 @@ export function AboutPreviewSection() {
   ]
   return (
     <section className="flex w-full flex-col items-center justify-center">
-      <div className="flex w-full items-center justify-center border-b py-5 text-center">
+      <div className="flex w-full items-center justify-center border-b px-4 py-5 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}

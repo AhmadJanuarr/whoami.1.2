@@ -25,7 +25,7 @@ const NAV_ITEMS = [
 
 export default function FooterWrapper() {
   return (
-    <footer className="w-full border-t bg-backgroundSecondary py-2 lg:py-16">
+    <footer className="w-full border-t bg-backgroundSecondary pt-5 lg:py-16">
       <div className="sizeSubtitle mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col space-y-12 md:flex-row md:space-x-12 md:space-y-0">
           <div className="flex flex-col space-y-6 md:w-2/5">
@@ -55,7 +55,7 @@ export default function FooterWrapper() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 border-t border-gray-100 pt-8 text-center">
+        <div className="border-t border-gray-100 py-3 text-center">
           <p className="text-sm text-gray-500">© {new Date().getFullYear()} Ahmad Januar A. All rights reserved.</p>
         </div>
       </div>

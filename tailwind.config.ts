@@ -44,8 +44,9 @@ const config: Config = {
         textSecondary: "#5E5F6E",
         backgroundPrimary: "#F7F7F8",
         backgroundSecondary: "#FCFCFC",
-        borderPrimary: "#E6E8EB",
+        borderPrimary: "#F0F0F0",
         primaryColor: "#3C9EE7",
+        accentColor: "#4F46E5",
       },
       fontFamily: {
         inter: ["var(--font-inter)"],

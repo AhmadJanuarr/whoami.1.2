@@ -4,10 +4,10 @@
 
 @layer components {
   .sizeSubtitle {
-    @apply text-[14px] font-medium leading-relaxed tracking-wide lg:text-[16px];
+    @apply text-[14px] font-normal leading-relaxed tracking-wide lg:text-[16px];
   }
   .sizeTitle {
-    @apply text-[32px] leading-none tracking-tight text-textPrimary lg:text-[60px];
+    @apply text-[28px] leading-none tracking-tight text-textPrimary lg:text-[60px];
   }
 }
 

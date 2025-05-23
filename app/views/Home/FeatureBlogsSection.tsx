@@ -1,38 +1,9 @@
 "use client"
 
+import { motion } from "framer-motion"
+import { FEATURED_BLOGS } from "@/datas/blogs"
 import SpotlightCard from "@/components/ui/spotlight-card"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-
-const blogData = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js 14",
-    description:
-      "Dive deep into the world of Next.js 14 and discover its powerful features like Server Components, App Router, and enhanced performance optimizations. Learn how to build modern, scalable web applications with the latest React framework.",
-    image: "/assets/images/blog-nextjs.png",
-    date: "March 15, 2024",
-    category: "Web Development",
-  },
-  {
-    id: 2,
-    title: "Mastering TypeScript",
-    description:
-      "Explore advanced TypeScript concepts including generics, utility types, and type inference. Understand how to write type-safe code and leverage TypeScript's powerful features to build robust applications with better maintainability.",
-    image: "/assets/images/blog-typescript.png",
-    date: "March 10, 2024",
-    category: "Programming",
-  },
-  {
-    id: 3,
-    title: "Building Beautiful UIs with Tailwind CSS",
-    description:
-      "Master the art of creating stunning user interfaces using Tailwind CSS. Learn advanced techniques for responsive design, custom animations, and component composition. Discover how to build consistent and accessible designs efficiently.",
-    image: "/assets/images/blog-tailwindcss.png",
-    date: "March 5, 2024",
-    category: "Design",
-  },
-]
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -59,14 +30,19 @@ const cardVariants = {
 export function FeatureBlogsSection() {
   return (
     <section className="relative w-full ">
-      <div className="container relative mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-16 text-center">
+      <div className="container relative mx-auto overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="mb-16 text-center"
+        >
           <h2 className="border-y py-2 text-sm font-medium uppercase tracking-wider text-accentColor">Latest Articles</h2>
           <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b py-5 text-textPrimary lg:text-[40px]">
             <h1 className="max-w-2xl "> I like to share experiences and experiments in writing.</h1>
           </div>
         </motion.div>
-
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -74,7 +50,7 @@ export function FeatureBlogsSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid h-auto w-full grid-cols-1 gap-8 px-5 py-5 md:grid-cols-2 lg:grid-cols-3"
         >
-          {blogData.map((blog) => (
+          {FEATURED_BLOGS.map((blog) => (
             <motion.div key={blog.id} variants={cardVariants}>
               <SpotlightCard className="group flex h-full flex-col overflow-hidden" spotlightColor="rgba(61, 144, 215, 0.2)">
                 <div className="relative h-64 w-full overflow-hidden rounded-xl">

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    // Configure images
     images: {
         dangerouslyAllowSVG: true,
         contentDispositionType: "inline",
@@ -9,6 +10,12 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "firebasestorage.googleapis.com",
+                port: "",
+                pathname: "/**",
+            },
+            {
+                protocol: "https",
+                hostname: "images.unsplash.com",
                 port: "",
                 pathname: "/**",
             },

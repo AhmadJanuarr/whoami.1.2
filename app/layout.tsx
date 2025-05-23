@@ -17,7 +17,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const aspekta = localFont({
   src: [
     { path: "/assets/fonts/Aspekta-200.otf", weight: "200" },
+    { path: "/assets/fonts/Aspekta-400.otf", weight: "400" },
     { path: "/assets/fonts/Aspekta-500.otf", weight: "500" },
+    { path: "/assets/fonts/Aspekta-600.otf", weight: "600" },
     { path: "/assets/fonts/Aspekta-700.otf", weight: "700" },
     { path: "/assets/fonts/Aspekta-800.otf", weight: "800" },
     { path: "/assets/fonts/Aspekta-900.otf", weight: "900" },
@@ -29,7 +31,7 @@ const aspekta = localFont({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         <SmoothScrollProvider>
           <Appshell className={`${aspekta.variable} ${inter.variable} relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
             {children}

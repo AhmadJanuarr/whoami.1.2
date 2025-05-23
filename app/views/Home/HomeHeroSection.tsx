@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from "framer-motion"
 import BounceCards from "@/components/ui/bounce-card"
 
 const images = [
@@ -17,22 +20,54 @@ const transformStyles = [
 ]
 
 export function HomeHeroSection() {
+  const lines = ["Hey, I'm Ahmad Januar!", "Welcome to my corner", "of the internet!"]
+
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center  pt-20 lg:px-0 lg:pt-0">
-      <div className="flex w-full items-center justify-center border-b border-borderPrimary py-10">
-        <div className="rounded-full border border-borderPrimary p-5">
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center   pt-20 lg:px-0 lg:pt-0">
+      <div className="flex w-full items-center justify-center overflow-hidden border-b border-borderPrimary py-10">
+        <motion.div
+          className=" rounded-full border border-borderPrimary p-5"
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
           <img src="/icons/favicon.ico" alt="mads" className="size-32  rounded-full border border-borderPrimary lg:size-40" />
+        </motion.div>
+      </div>
+
+      <div className="flex w-full items-center justify-center overflow-hidden border-b border-borderPrimary">
+        <div className="flex w-full max-w-3xl flex-col items-center justify-center">
+          {lines.map((line, index) => (
+            <div key={index} className="">
+              <motion.h1
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut",
+                  delay: index * 0.3,
+                }}
+                className="sizeTitle text-center font-semibold"
+              >
+                {line}
+              </motion.h1>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="flex w-full items-center justify-center border-b border-borderPrimary">
-        <h1 className="sizeTitle max-w-2xl text-center">Hey, I'm Ahmad Januar! Welcome to my corner of the internet!</h1>
-      </div>
+
       <div className="flex w-full flex-col items-center justify-center border-b border-borderPrimary">
         <div className="w-full border-b border-borderPrimary py-5"></div>
-        <div className="sizeSubtitle flex w-full max-w-3xl items-center justify-center py-5 text-center text-textSecondary">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="sizeSubtitle flex w-full max-w-3xl items-center justify-center px-5 py-5 text-center text-textSecondary lg:px-0"
+        >
           Welcome to my digital experimentation place! I am a front-end developer who loves to design and tinker. This website is my playroom to try
           out new ideas and share interesting things!
-        </div>
+        </motion.div>
       </div>
       <div className="flex w-full flex-col items-center justify-center border-b border-borderPrimary">
         <div className="w-full items-center justify-center border-b border-borderPrimary py-5">

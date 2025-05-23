@@ -1,8 +1,7 @@
 "use client"
-import { motion } from "framer-motion"
 import { GridCard } from "@/components/cards/GridCard"
 import { Stack } from "@/components/ui/card-stack"
-import { AboutTrackPattern } from "@/components/ui/about-track-patern"
+import { motion } from "framer-motion"
 
 export function AboutPreviewSection() {
   const images = [

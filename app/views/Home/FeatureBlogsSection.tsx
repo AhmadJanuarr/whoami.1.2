@@ -39,8 +39,8 @@ export function FeatureBlogsSection() {
           className="mb-16 text-center"
         >
           <h2 className="border-y py-2 text-sm font-medium uppercase tracking-wider text-accentColor">Latest Articles</h2>
-          <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b py-5 text-textPrimary lg:text-[40px]">
-            <h1 className="max-w-2xl "> I like to share experiences and experiments in writing.</h1>
+          <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b px-4 py-5 text-textPrimary lg:text-[40px]">
+            <h1 className="max-w-2xl"> I like to share experiences and experiments in writing.</h1>
           </div>
         </motion.div>
         <motion.div

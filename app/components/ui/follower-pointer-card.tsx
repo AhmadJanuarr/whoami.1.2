@@ -14,15 +14,13 @@ const colors = [
   { from: "#ec4899", to: "#db2777" }, // Pink
 ]
 
-export const FollowerPointerCard = ({
-  children,
-  className,
-  title,
-}: {
+interface FollowerPointerCardProps {
   children: React.ReactNode
   className?: string
   title?: string | React.ReactNode
-}) => {
+}
+
+const FollowerPointerCard = ({ children, className, title }: FollowerPointerCardProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const [currentColor, setCurrentColor] = useState(colors[0])
@@ -101,3 +99,5 @@ export const FollowerPointerCard = ({
     </div>
   )
 }
+
+export default FollowerPointerCard

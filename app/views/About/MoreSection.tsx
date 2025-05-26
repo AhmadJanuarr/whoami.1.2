@@ -1,5 +1,5 @@
 import { GridCard } from "@/components/cards/GridCard"
-import { lazy, Suspense } from "react"
+import { Suspense } from "react"
 import Image from "next/image"
 
 // Grid Card Components

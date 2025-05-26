@@ -1,0 +1,149 @@
+---
+title: "Building a Full-Stack Component"
+summary: "Discover how full-stack components streamline software development by bundling frontend, backend, and infrastructure into reusable, autonomous units."
+publishedAt: "2025-05-26"
+author: "Ahmad Januar"
+coverImage: "/blogs/building-fullstack-components.webp"
+imageName: "building-fullstack-components.webp"
+category: ["Programming", "Architecture"]
+---
+
+![image credits](/blogs/content/building-fullstack-1.webp)
+
+As modern software systems grow in complexity, they naturally become more modularized and distributed. Rather than maintaining a single, monolithic codebase, development teams increasingly structure their applications as loosely-coupled components. This approach allows teams to work autonomously, focusing on specific areas of the system without the need to grasp its entirety.
+
+Traditionally, modularity in software has been driven by technical considerations — separating frontend and backend services based on their runtimes, technologies, or infrastructure needs. While this separation has its advantages, it also creates friction. Teams often find themselves waiting on API implementations, synchronizing deployments, or struggling with mismatches between the frontend and backend layers of a feature.
+
+Full-stack components introduce a different way of thinking about modularity. Instead of splitting software along technical boundaries, they encapsulate entire units based on business goals. A full-stack component includes both the frontend UI and the backend logic required to power it, enabling teams to deliver complete features without dependencies on other teams. This approach abstracts away infrastructure details, allowing developers to think in terms of product functionality rather than system architecture.
+
+### Using “Harmony” for the integration of full-stack components
+
+Harmony is a lightweight library built to streamline the integration of composable software. It enables teams to combine independently delivered full-stack components, called “aspects”, to form unified, cohesive platforms.
+
+A single “aspect” component can provide multiple entry files, one for each runtime, whether it’s the browser runtime, Node.js runtime, and possibly, other runtimes. For example, see the files of the “People” feature implemented as a Bit aspect component:
+
+```jsx
+.
+└── people
+    ├── people-config.ts # the aspect's configuration options
+    ├── people.aspect.ts # the aspect's manifest file
+    ├── people.browser.runtime.ts # the aspect's browser runtime entry point
+    ├── people.browser.spec.ts # the aspect's browser test file
+    ├── people.docs.mdx # the aspect's documentation
+    ├── people.node.runtime.ts # the aspect's node runtime entry point
+    ├── people.node.spec.ts # the aspect's node test file
+    ├── index.ts # the component's entry point
+    └── menu-list-items.ts # the aspect's integration slot
+```
+
+Although aspect components are delivered as independent units, they are integrated at build time, enabling optimized build artifacts and secure deployments to production. This integration takes place within an “app component” — a deployable Bit component that implements a Harmony platform. For instance:
+
+```js
+/**
+ * @filename pied-piper.bit-app.ts
+ */
+
+import { PeopleAspect } from '@pied/people.people';
+// ...
+
+export const PiedPiper = HarmonyPlatform.from({
+  name: 'pied-piper',
+  platform: [
+    SymphonyPlatformAspect,
+    {
+      name: 'PiedPiper',
+      slogan: 'Platform',
+      logo: 'https://static.bit.dev/extensions-icons/wayne.svg',
+    },
+  ],
+
+  runtimes: [new BrowserRuntime(), new NodeJSRuntime()],
+
+  aspects: [PeopleAspect, BlogAspect, PaymentAspect],
+});
+```
+
+### What makes a Bit component an “aspect component”?
+
+Aspects are Bit components, maintained, built, and delivered as independent building blocks, just like other Bit component types. The key difference is that their implementation follows Harmony’s conventions and specifications.
+
+For example, our ‘people’ aspect integrates into the system’s backend Node.js runtime by implementing the following:
+
+```jsx
+/**
+ * @componentId: pied.people/people
+ * @filename people.node.runtime.ts
+ */
+
+import {
+  SymphonyPlatformNode,
+  SymphonyPlatformAspect,
+} from '@bitdev/symphony.symphony-platform';
+import { createPeopleGqlSchema } from './people.graphql.js';
+import {
+  PiedPlatformNode,
+  PiedPlatformAspect,
+} from '@pied/pied-piper.pied-platform';
+// ...
+
+export class PeopleNode {
+  // ...
+
+  async getCurrentUser(req: any): Promise<User | null> {
+    // ...
+    return User.from(user);
+  }
+
+  static dependencies = [SymphonyPlatformAspect];
+
+  static async provider([symphonyPlatform]: [
+    SymphonyPlatformNode
+  ]) {
+    const gqlSchema = createPeopleGqlSchema(people);
+
+    /**
+     * Register a GraphQL schema to the platform's backend server.
+     */
+    piedPlatform.registerBackendServer([
+      {
+        routes: [],
+        gql: gqlSchema,
+      },
+    ]);
+
+    /**
+     * Register to the platform's middleware to intercept requests to the backend
+     * and attach the user to the request.
+     */
+    symphonyPlatform.registerMiddlewares([
+      (req, _, next) => {
+        const user = people.getCurrentUser(req);
+        req.user = user;
+        next();
+      },
+    ]);
+
+    return people;
+  }
+}
+
+export default PeopleNode;
+```
+
+The *“people”* aspect defines the “symphony platform” aspect as a runtime dependency ( `static dependencies = [SymphonyPlatformAspect]`). It relies on Harmony to inject an instance of the “symphony platform” aspect before initializing its own instance (` static async provider([symphonyPlatform]: [SymphonyPlatformNode])`).
+
+In other words, Harmony orchestrates the instantiation of aspect classes and manages their dependencies by injecting them into one another.
+
+In this example, the “people” aspect integrates into the system’s Node.js runtime via the “symphony platform” aspect (though other aspects can also be used). It does so by:
+
+1. Extending the system’s middleware with its own function — in this case, an authentication function.
+2. Extending the system’s GraphQL schema by adding its own nodes, such as the `User` node, which provides information about registered users.
+
+### Conclusion
+
+Full-stack components represent a paradigm shift in software modularity, moving beyond traditional frontend-backend boundaries to encapsulate entire business functionalities. By bundling UI, backend logic, and infrastructure concerns into composable units, teams can work more autonomously, reduce cross-team dependencies, and accelerate feature delivery.
+
+The Harmony framework further streamlines this approach by enabling seamless integration of full-stack components, called aspects, into larger applications. With Harmony’s dependency injection and runtime management, aspects can efficiently extend a platform’s capabilities while maintaining modularity and reusability.
+
+As organizations continue to seek more scalable and efficient ways to develop and deploy software, adopting full-stack components and leveraging tools like Harmony and Bit can provide a powerful foundation for building modern, composable applications.
+

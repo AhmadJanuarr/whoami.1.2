@@ -1,0 +1,53 @@
+---
+title: "What is Bias and Variance in Machine Learning?"
+summary: "Understand the fundamental concepts of bias and variance in machine learning, their trade-offs, and how they affect model performance and generalization."
+publishedAt: "2025-06-01" 
+author: "Ahmad Januar"
+coverImage: "/blogs/what-is-bias-and-variance-in-machine-learning.webp"
+imageName: "what-is-bias-and-variance-in-machine-learning.webp"
+category: ["Machine Learning", "Artificial Intelligence", "Data Science"]
+---
+
+
+## What is Bias and Variance in Machine Learning?
+
+If the machine learning model is not accurate, it can cause prediction errors. These prediction errors are commonly called Bias and Variance. In machine learning, these errors will arise because there is always a difference between the model's prediction and the actual prediction.
+
+So, what exactly are bias and variance in machine learning?
+
+![ilustraion machine learning bias](/blogs/content/machinglearning-bias.webp)
+
+### Bias
+
+Bias is known as the difference between the predicted value of a Machine Learning model and the actual value. Bias occurs in machine learning models due to incorrect assumptions in the modeling process.
+
+High bias is due to oversimplification in ML model development. Another causal factor is because the ML model does not fully understand the training data, in other words, the model cannot capture data trends accurately. Models with high bias also cannot work well on new data. Therefore, models with high bias produce inaccurate predictions.
+
+Algorithms with high bias have lower predictive performance for complex data. In general, linear algorithms have high bias which makes them faster to learn and easier to understand but less flexible.
+
+A model with high bias will not be able to capture the trend of the data set. This model is considered an underfitting model. Some machine learning algorithms with high bias include `Linear Regression`, `Logistic Regression`, and `Linear Discriminant Analysis`. While examples of machine learning algorithms with low bias include `Decision Tree`, `K-Nearest Neighbors (KNN)`, and `Support Vector Machine (SVM)`.
+
+How to reduce High Bias:
+
+- Increase the number of features.
+- Reduce model Regularization.
+- Use a more complex model.
+
+### Variance
+
+Variance is the amount by which a predictive model's performance changes on a new subset of data, or variance is the amount by which the model's predictions on new data differ from those on the training data. 
+
+High variance occurs when the model performs too well on the training data but does not perform well on the test or validation data. The model learns well only on the training data. A model with high variance will produce good accuracy on the training data, while its accuracy will be poor on the test or validation data.
+
+A model with high variance will capture most of the patterns in the data, but it will also learn from unnecessary data, such as noise, and will cause the model to treat trivial features as important. A model with high variance will cause overfitting, this is usually caused by the complexity of the training data and consisting of many features.
+
+Examples of low variance machine learning algorithms include `Linear Regression`,`Logistic Regression`, and `Linear Discriminant Analysis`. Examples of high variance machine learning algorithms include Decision Tree, `K-Nearest Neighbors (KNN)`, and `Support Vector Machine (SVM)`.
+
+How to reduce high Variance:
+
+- Perform feature selection
+- Don't use too complex a model.
+- Increase the amount of training data.
+- Increase Regularization.
+- Cross-validation
+- Early stopping

@@ -1,0 +1,76 @@
+---
+title: "Lazy Loading Secrets: Powerful Tips to Improve Your Website Performance!"
+summary: "Learn the core principles of Object-Oriented Programming (OOP) including encapsulation, inheritance, polymorphism, and abstraction with practical examples."
+publishedAt: "2025-06-01" 
+author: "Ahmad Januar"
+coverImage: "/blogs/understanding-object-oriented-programming-principles.webp"
+imageName: "understanding-object-oriented-programming-principles.webp"
+category: ["Programming"]
+---
+
+
+When it comes to website performance, loading time is a factor that cannot be ignored. The faster your website loads, the more satisfied your visitors will be! Well, one surefire trick to speed up your website is lazy loading. But, how do you optimize it? Let's discuss it further!
+
+### What is Lazy Loading?
+
+Before we get into the tips, let's first understand the concept. Lazy loading is a technique of loading elements on a page, such as images, videos, or iframes, only when they are visible on the screen (viewport). For example, the visitor has not scrolled down, so the images below have not been loaded. This way, the initial loading time is faster, and the visitor does not have to wait long.
+
+### Why is Lazy Loading Important?
+
+Still hesitant to use lazy loading? Here are some reasons why you should try this technique:
+
+- Speed ​​Up Website Page Loading You don't need to load all elements at once, only the elements that are currently visible.
+- Save Bandwidth Users only download the elements they need, suitable for visitors with slow connections.
+- Improve SEO Google loves speed, and lazy loading helps improve PageSpeed ​​Insight.
+
+### Tips for Using Lazy Loading Optimally
+
+Start with Images Images are often the cause of slow website loading. With lazy loading, you can overcome this easily. The easiest way: use the `loading="lazy"` attribute in HTML.
+   
+```html
+<img src="gambar.jpg" alt="Deskripsi Gambar" loading="lazy" />
+```
+
+Modern browsers like **Chrome**, **Firefox**, and **Edge** already support this attribute.
+
+> Additional tip: Make sure your images are optimized first, such as using a modern format (WebP) or compressing the image files.
+
+Apply to Iframe Iframes are often used to display YouTube videos, Google Maps, or other heavy elements. Lazy loading iframes greatly helps reduce loading time.
+
+```html
+<iframe src="https://www.youtube.com/embed/videoid" loading="lazy"></iframe>
+```
+
+Use Lazy Loading Libraries If you are using a framework like *React*, *Vue*, or *Angular*, there are many libraries you can use. Some recommendations:
+
+- `React Lazy Load`: Makes it easy to implement lazy loading in React components.
+- `Vue Lazyload`: Suitable for Vue.js projects.
+- `Lozad.js`: Lightweight library for lazy loading any element.
+
+For example, using `Lozad.js`:
+```js
+const observer = lozad();
+observer.observe();
+```
+Use aesthetic placeholders when the element is loading, display a placeholder. This gives a professional impression and reduces bad user experience. Example using CSS for image placeholders:
+
+```css
+img[loading="lazy"] {
+background: #f0f0f0;
+min-height: 200px;
+}
+```
+
+Don't Lazy Load all important elements such as hero banners or main content above the fold should be loaded immediately without lazy loading. Focus lazy loading on elements below the screen.
+
+Periodic Performance Testing After implementing lazy loading, don't forget to test the website's performance. Use tools such as:
+
+- Google PageSpeed ​​Insights
+- GTmetrix
+- Lighthouse
+  
+Make sure lazy loading actually has a positive impact on your website's loading time.
+
+### Lazy Loading in WordPress
+
+If you are using WordPress, there are plugins like WP Rocket or Smush that automatically enable lazy loading for images and videos. So, what are you waiting for? Apply lazy loading immediately and see the difference for yourself! Have an interesting experience with lazy loading? Let's discuss it in the comments column!

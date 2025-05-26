@@ -1,8 +1,8 @@
 "use client"
 
-import { FollowerPointerCard } from "@/components/ui/follower-pointer-card"
 import { motion } from "framer-motion"
 import { CrossLine } from "../CrossLine"
+import FollowerPointerCard from "@/components/ui/follower-pointer-card"
 
 export function NewsLetterSection() {
   return (

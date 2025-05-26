@@ -1,4 +1,4 @@
-import { BentoCardProps } from "@/types/component"
+import { BentoCardProps } from "@/types/components"
 import { PiArrowUpRightBold } from "react-icons/pi"
 import Link from "next/link"
 

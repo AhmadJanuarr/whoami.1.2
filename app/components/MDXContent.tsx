@@ -104,7 +104,14 @@ function MDXImage({ children }: { children: string }) {
   return (
     <div className="my-8 flex w-full items-center justify-center">
       <div className="relative mx-auto w-full max-w-3xl">
-        <Image src={children} alt={children} width={800} height={400} className="mx-auto w-full rounded-lg object-cover" />
+        <Image
+          src={children}
+          alt={children.split("/").pop() || "Blog image"}
+          width={800}
+          height={400}
+          className="mx-auto w-full rounded-lg object-cover"
+          priority
+        />
       </div>
     </div>
   )
@@ -114,7 +121,15 @@ function Img({ src, alt, title }: { src: string; alt?: string; title?: string })
   return (
     <div className="my-8 flex w-full items-center justify-center">
       <div className="relative mx-auto w-full max-w-2xl">
-        <Image src={src} alt={alt || ""} width={800} height={400} className="mx-auto w-full rounded-lg object-cover" title={title} />
+        <Image
+          src={src}
+          alt={alt || src.split("/").pop() || "Blog image"}
+          width={800}
+          height={400}
+          className="mx-auto w-full rounded-lg object-cover"
+          title={title}
+          priority
+        />
       </div>
     </div>
   )
@@ -139,22 +154,67 @@ const components = {
 
 export default function MDXContent({ content }: MDXContentProps) {
   const [mdxSource, setMdxSource] = useState<any>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const processContent = async () => {
-      const mdxSource = await serialize(content)
-      setMdxSource(mdxSource)
+      try {
+        if (!content) {
+          throw new Error("Content is empty")
+        }
+        console.log("Processing MDX content:", content.substring(0, 100) + "...")
+        const mdxSource = await serialize(content, {
+          mdxOptions: {
+            development: process.env.NODE_ENV === "development",
+            format: "mdx",
+          },
+          parseFrontmatter: true,
+        })
+        console.log("MDX source processed successfully:", mdxSource)
+        if (!mdxSource) {
+          throw new Error("Failed to process MDX content")
+        }
+
+        setMdxSource(mdxSource)
+      } catch (err) {
+        console.error("Error processing MDX content:", err)
+        setError(err instanceof Error ? err.message : "Failed to process content")
+      }
     }
     processContent()
   }, [content])
 
-  if (!mdxSource) {
-    return <div>Loading...</div>
+  if (error) {
+    return (
+      <div className="rounded-lg border border-red-500 bg-red-50 p-4 text-red-700">
+        <h3 className="mb-2 font-semibold">Error Processing Content</h3>
+        <p>{error}</p>
+        <pre className="mt-4 overflow-auto rounded bg-red-100 p-2 text-sm">{content?.substring(0, 200)}...</pre>
+      </div>
+    )
   }
 
-  return (
-    <div className="prose prose-lg max-w-none">
-      <MDXRemote {...mdxSource} components={components} />
-    </div>
-  )
+  if (!mdxSource) {
+    return (
+      <div className="flex items-center justify-center p-8">
+        <div className="text-gray-500">Loading content...</div>
+      </div>
+    )
+  }
+
+  try {
+    return (
+      <div className="prose prose-lg max-w-none">
+        <MDXRemote {...mdxSource} components={components} />
+      </div>
+    )
+  } catch (err) {
+    console.error("Error rendering MDX content:", err)
+    return (
+      <div className="rounded-lg border border-red-500 bg-red-50 p-4 text-red-700">
+        <h3 className="mb-2 font-semibold">Error Rendering Content</h3>
+        <p>{err instanceof Error ? err.message : "Failed to render content"}</p>
+      </div>
+    )
+  }
 }

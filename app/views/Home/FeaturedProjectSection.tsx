@@ -1,7 +1,7 @@
 "use client"
-import { FollowerPointerCard } from "@/components/ui/follower-pointer-card"
 import { FEATURED_PROJECT_LIST } from "@/datas/project-list"
 import { motion } from "framer-motion"
+import FollowerPointerCard from "@/components/ui/follower-pointer-card"
 
 import Image from "next/image"
 

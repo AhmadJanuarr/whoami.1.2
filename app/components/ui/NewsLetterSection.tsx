@@ -2,6 +2,7 @@
 
 import { FollowerPointerCard } from "@/components/ui/follower-pointer-card"
 import { motion } from "framer-motion"
+import { CrossLine } from "../CrossLine"
 
 export function NewsLetterSection() {
   return (
@@ -10,20 +11,15 @@ export function NewsLetterSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative my-20 flex w-full flex-col items-center justify-start overflow-hidden bg-[#3C3C3F] px-10 py-28 lg:rounded-3xl"
+      className="relative my-20 flex w-full flex-col items-center justify-start overflow-hidden bg-[#3C3C3F] px-10  lg:rounded-3xl"
     >
-      {/* Background Pattern Elements */}
-      <div className="absolute left-0 right-0 top-10 h-[1px] bg-backgroundPrimary opacity-15" />
-      <div className="absolute bottom-10 left-0 right-0 h-[1px] bg-backgroundPrimary opacity-15" />
-      <div className="absolute bottom-0 left-10 top-0 w-[1px] bg-backgroundPrimary opacity-15" />
-      <div className="absolute bottom-0 right-10 top-0 w-[1px] bg-backgroundPrimary opacity-15" />
-
+      <CrossLine />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="flex max-w-2xl flex-col items-center gap-6 px-5 text-left "
+        className="flex max-w-2xl flex-col items-center gap-6 px-5 py-28 text-left"
       >
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

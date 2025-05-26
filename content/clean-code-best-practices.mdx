@@ -1,11 +1,59 @@
 ---
-title: "Two Forms of Pre-rendering"
-date: "2020-01-01"
+title: "Why do we need clean code?"
+summary: "Discover essential clean code best practices to write maintainable, readable, and efficient code. Learn principles and techniques for better software development."
+publishedAt: "2025-05-24"
+author: "Ahmad Januar"
+coverImage: "/blogs/clean-code-best-practices.webp"
+imageName: "clean-code-best-practices.webp"
+category: ["Programming", "Architecture"]
 ---
 
-Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
+### Why do we need clean code?
+Bro sis, have you ever felt frustrated when you see your own code or your friend's code that is super complicated? It's like watching a Korean drama without subtitles—totally confusing! Well, clean code is like a cool subtitle that makes everyone understand the storyline. Come on, let's talk about why you should bother writing clean code!
 
-- **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
-- **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
+## 1. So You Don't Get Lost: Readability is 🔑
 
-Importantly, Next.js lets you **choose** which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+Imagine going into a new meatball shop, the menu is not clear, the names of the meatballs are different. Are you mad? It's the same in the code. The variable names `a`, `b`, `c` make you play around like you are dancing alone.
+
+
+```js
+// ✗ Regret reading this
+function f(a, b) {
+return a * b + 42 - c;
+}
+
+// ✓ Easy to read
+function calculateFinalScore(baseScore, multiplier, bonus) {
+return baseScore * multiplier + bonus;
+}
+```
+![ilustration clean code](/blogs/content/clean-code-1.webp )
+
+### 2. Not Emotional During Revisions: Maintainability FTW
+
+You're working on a new feature, but suddenly a bug appears. If your code is messy, fixing bugs takes time, like waiting in line to buy rare items.
+
+- Clean code: modular, small functions, easy to replace
+- Spaghetti code: hang around in every corner, you become a dirty dish cleaner
+  
+### 3. Teamwork Made Fun: Collaboration 🎉
+
+Imagine coding alone in a cave, then suddenly invited to a team. If your code is unclear, your friends will complain: "Bro, what's the point of this?". But if you write clean code:
+
+- Self-explanatory documentation via function/variable names
+- Style consistency: everyone uses the same pattern
+- Fewer merge conflicts when collaborating in Git
+
+### 4. Debugging doesn't use drama: Fewer Headaches 🧠💊
+
+Clean code is like code that has instructions. You just click, trace, fix. No need to be Sherlock Holmes, hunting for clues.
+
+```jsx
+// Add clear logging for easy debugging
+function fetchUserData(userId) {
+  console.log(`[DEBUG] fetchUserData called with userId=${userId}`);
+  // ... call API
+}
+```
+
+

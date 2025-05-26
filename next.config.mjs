@@ -1,5 +1,15 @@
+import createMDX from '@next/mdx'
+
+const withMDX = createMDX({
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: [],
+    },
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
     reactStrictMode: true,
     // Configure images
     images: {
@@ -11,7 +21,7 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "firebasestorage.googleapis.com",
                 port: "",
-                pathname: "/**",
+                pathname: "/**",    
             },
             {
                 protocol: "https",
@@ -23,4 +33,5 @@ const nextConfig = {
     },
 }
 
-export default nextConfig
+export default withMDX(nextConfig)
+

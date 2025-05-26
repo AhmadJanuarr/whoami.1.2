@@ -1,8 +1,8 @@
 "use client"
-import { FollowerPointerCard } from "@/components/ui/follower-pointer-card"
 import { PROJECT_LIST, ProjectCardProps } from "@/datas/project-list"
 import { motion } from "framer-motion"
 import { PiArrowArcRight } from "react-icons/pi"
+import FollowerPointerCard from "@/components/ui/follower-pointer-card"
 import Link from "next/link"
 
 const ProjectCard = ({ imageSrc, imageAlt, title, description, link, linkText }: ProjectCardProps) => {

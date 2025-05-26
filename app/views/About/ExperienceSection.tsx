@@ -1,9 +1,9 @@
 "use client"
 
 import { EXPERIENCE_LIST, ExperienceItem } from "@/datas/experience"
-import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useEffect, useRef } from "react"
+import gsap from "gsap"
 
 gsap.registerPlugin(ScrollTrigger)
 

@@ -53,7 +53,7 @@ const config: Config = {
         aspekta: ["var(--font-aspekta)", "sans-serif"],
       },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/typography")],
   },
 }
 export default config

@@ -13,7 +13,7 @@ export function AboutTrackPattern() {
   })
 
   const [pathLength, setPathLength] = useState(0)
-  const [position, setPosition] = useState({ x: 145, y: 0 })
+  const [position, setPosition] = useState({ x: 123.5, y: 5 }) // Set initial position to match start of path
 
   useEffect(() => {
     if (!pathRef.current && !verticalPathRef.current) return
@@ -25,17 +25,21 @@ export function AboutTrackPattern() {
     if ((!pathRef.current && !verticalPathRef.current) || !pathLength) return
     return scrollYProgress.on("change", (latest) => {
       const clampedProgress = Math.max(0, Math.min(latest, 1))
-      if (latest > 0) {
-        const activePath = window.innerWidth >= 1024 ? pathRef.current : verticalPathRef.current
-        if (!activePath) return
-        const point = activePath.getPointAtLength(pathLength * clampedProgress)
-        setPosition({ x: point.x, y: point.y })
-      }
+      const activePath = window.innerWidth >= 1024 ? pathRef.current : verticalPathRef.current
+      if (!activePath) return
+      const point = activePath.getPointAtLength(pathLength * clampedProgress)
+      setPosition({ x: point.x, y: point.y })
     })
   }, [pathLength, scrollYProgress])
 
   return (
-    <div ref={containerRef} className="relative">
+    <motion.div
+      ref={containerRef}
+      className="relative"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.8 }}
+    >
       <svg width="381" height="1707" viewBox="0 0 381 1707" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_i_23_717)">
           <path
@@ -74,6 +78,6 @@ export function AboutTrackPattern() {
           y: position.y - 10,
         }}
       />
-    </div>
+    </motion.div>
   )
 }

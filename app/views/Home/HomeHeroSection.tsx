@@ -4,11 +4,11 @@ import { motion } from "framer-motion"
 import BounceCards from "@/components/ui/bounce-card"
 
 const images = [
-  "https://picsum.photos/400/400?grayscale",
-  "https://picsum.photos/500/500?grayscale",
-  "https://picsum.photos/600/600?grayscale",
-  "https://picsum.photos/700/700?grayscale",
-  "https://picsum.photos/300/300?grayscale",
+  "/assets/images/home-1.webp",
+  "/assets/images/home-2.webp",
+  "/assets/images/home-3.webp",
+  "/assets/images/home-4.webp",
+  "/assets/images/home-5.webp",
 ]
 
 const transformStyles = [

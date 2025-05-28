@@ -297,7 +297,7 @@ GRANT DELETE ON users TO app_admins;
 
 Also, row-level security features can be used to finely restrict people from accessing a certain row in the table.
 
-```mysql
+```jsx
 create policy user_policy_select
 on public.users for select to users
 USING (

@@ -4,11 +4,11 @@ import { motion } from "framer-motion"
 import BounceCards from "@/components/ui/bounce-card"
 
 const images = [
-  "/assets/images/home-1.webp",
-  "/assets/images/home-2.webp",
-  "/assets/images/home-3.webp",
-  "/assets/images/home-4.webp",
-  "/assets/images/home-5.webp",
+  "/assets/images/home-1.jpg",
+  "/assets/images/home-2.jpg",
+  "/assets/images/home-3.jpg",
+  "/assets/images/home-4.jpg",
+  "/assets/images/home-5.jpg",
 ]
 
 const transformStyles = [

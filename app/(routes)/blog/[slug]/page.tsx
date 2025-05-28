@@ -67,7 +67,14 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             <div className="grid grid-cols-3 gap-4">
               {relatedPosts.map((post) => (
                 <div key={post.slug}>
-                  <Image src={post.coverImage} alt={post.title} width={300} height={200} />
+                  <Image
+                    src={post.coverImage}
+                    alt={post.title}
+                    width={300}
+                    height={200}
+                    className="w-full rounded-lg object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                 </div>
               ))}
             </div>

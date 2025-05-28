@@ -83,7 +83,7 @@ export const HeaderWrapper = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="fixed left-0 top-16 z-10 h-screen w-full border bg-backgroundPrimary backdrop-blur-sm lg:hidden"
+              className="fixed left-0 top-0 -z-10 h-screen w-full border bg-backgroundPrimary backdrop-blur-sm lg:hidden"
               onClick={() => setIsMenuOpen(false)}
             >
               <div className="flex h-full flex-col items-center justify-center">
@@ -101,8 +101,7 @@ export const HeaderWrapper = () => {
                       animate={{ y: 0, opacity: 1 }}
                       exit={{ y: -20, opacity: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1, ease: "easeInOut" }}
-                      whileHover={{ scale: 1.1 }}
-                      className={`sizeTitle w-full cursor-pointer list-none border-b py-4 text-center uppercase hover:bg-backgroundSecondary
+                      className={`sizeTitle w-full cursor-pointer list-none border-b py-4 text-center uppercase
                         ${item.isActive ? "font-bold text-textPrimary" : "text-textSecondary"}
                       `}
                       onClick={() => {
@@ -113,22 +112,6 @@ export const HeaderWrapper = () => {
                       {item.label}
                     </motion.li>
                   ))}
-
-                  <div className="flex gap-5 px-4 py-4">
-                    {NAV_ICONS.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ y: -20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1, ease: "easeInOut" }}
-                        whileHover={{ scale: 1.1 }}
-                        className="flex gap-5 px-4 py-2 "
-                      >
-                        {item.icon}
-                      </motion.div>
-                    ))}
-                  </div>
                 </motion.div>
               </div>
             </motion.div>

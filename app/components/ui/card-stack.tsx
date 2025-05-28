@@ -87,9 +87,7 @@ export const Stack = ({
       }}
     >
       {cards.map((card, index) => {
-        const randomRotate = randomRotation
-          ? Math.random() * 10 - 5 // Random degree between -5 and 5
-          : 0
+        const rotationValue = randomRotation ? index * 2 - 3 : 0
 
         return (
           <CardRotate key={card.id} onSendToBack={() => sendToBack(card.id)} sensitivity={sensitivity}>
@@ -97,7 +95,7 @@ export const Stack = ({
               className="absolute overflow-hidden rounded-2xl border-4 border-white"
               onClick={() => sendToBackOnClick && sendToBack(card.id)}
               animate={{
-                rotateZ: (cards.length - index - 1) * 4 + randomRotate,
+                rotateZ: (cards.length - index - 1) * 4 + rotationValue,
                 scale: 1 + index * 0.06 - cards.length * 0.06,
                 transformOrigin: "90% 90%",
               }}
@@ -112,7 +110,7 @@ export const Stack = ({
                 height: cardDimensions.height,
               }}
             >
-              <img src={card.img} alt={`card-${card.id}`} className="pointer-events-none  h-full w-full object-cover" />
+              <img src={card.img} alt={`card-${card.id}`} className="pointer-events-none h-full w-full object-cover" />
             </motion.div>
           </CardRotate>
         )

@@ -144,7 +144,7 @@ export default function BounceCards({
           onMouseEnter={() => pushSiblings(idx)}
           onMouseLeave={resetSiblings}
         >
-          <img className="h-full w-full object-cover" src={src} alt={`card-${idx}`} />
+          <img className="h-full w-full object-cover" loading="lazy" src={src} alt={`card-${idx}`} />
         </div>
       ))}
     </motion.div>

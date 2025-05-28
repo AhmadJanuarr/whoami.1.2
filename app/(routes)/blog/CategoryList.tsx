@@ -5,7 +5,7 @@ import { useState } from "react"
 export default function CategoryList({ categories }: CategoryListProps) {
   const [selectedCategory, setSelectedCategory] = useState<Category>("All")
   return (
-    <div className="no-scrollbar overflow-x-auto">
+    <div className="no-scrollbar overflow-x-auto py-1">
       <ul className="flex gap-3 whitespace-nowrap px-1 text-sm text-gray-600">
         {categories.map((category) => (
           <li

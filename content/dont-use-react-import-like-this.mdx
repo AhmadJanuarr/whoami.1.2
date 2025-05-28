@@ -1,0 +1,147 @@
+---
+title: "Don’t use React imports like this. Use Wrapper Pattern instead"
+summary: "Learn how to avoid common React import patterns and implement the Wrapper Pattern for better code organization and maintainability in your React applications."
+publishedAt: "2025-05-24"
+author: "Ahmad Januar"
+coverImage: "/blogs/dont-use-react-import-like-this.webp"
+imageName: "dont-use-react-import-like-this.webp"
+category: ["Programming", "Architecture"]
+---
+
+![image credits](/blogs/content/dont-use-react-import-1.webp)
+
+### Introduction    
+
+While working on a real-life project, I came across an inefficient React.js **import strategy**. In this blog, I’ll walk you through the problem and how I solved it. Read how I improved the design by creating a more flexible approach using the **Wrapper Pattern**.
+
+### The problem
+
+In one project I saw **lodash & Framer Motion**(or any other lib) imported like this:
+
+```jsx
+import _ from 'lodash' -> imported 71.78KB
+import { motion } from 'framer-motion' -> imported 111,19KB
+```
+
+In the examples above, you are [importing the entire libraries](https://www.geeksforgeeks.org/how-to-import-lodash-libraries-in-javascript/).
+
+So without any other dependencies, you have already included in your build a total of ~**180KB**. And where are UI libraries, icons library.. maybe some chart library?
+
+If your total application size is around 1MB, Framer Motion and Lodash alone could be responsible for 18% of it! Instead, you should import it more concretely like this:
+
+```jsx
+import methodName from 'lodash/methodName';
+```
+
+```jsx
+// before:
+import _ from 'lodash' -> imported 71.78KB
+
+// after:
+import debounce from "lodash/debounce"; -> imported 3.41KB
+import merge from 'lodash/merge'; -> imported 16KB
+```
+Now this looks like a solved thing. Well, it’s not totally. Imagine the following scenario. You imported this in a total of 10+ files. Now you want to change something. You will issue the following problems:
+
+1. **Refactoring all files where you imported it**: If you’re using lodash in 10+ different files, you’ll have to change how you import lodash in each of those files. This means you would have to refactor 10 files, which can be very tedious. This will result in a big unnecessary PR.
+2. **Potential for missing changes**: It’s easy to miss some files that require update, leading to inconsistent behavior or errors in certain parts of the codebase.
+3.**Difficulty in managing multiple branches**: Imagine you get PR merge conflicts. And the conflict is the different way of importing in all 10+ modified files. You need to check each of them. With wrapper, you only see that file and know with which version to proceed
+
+### More flexible way | Wrapper Pattern
+
+Create a `LodashWrapper.tsx` file:
+
+```jsx
+import debounce from "lodash/debounce"; -> 3.41KB
+
+const lodashWrapper = {
+  debounce
+};
+
+export default lodashWrapper;
+```
+
+And now you can use it wherever you need through your codebase:
+
+```jsx
+import lodashWrapper from './lodashWrapper';
+
+const SearchInput = () => {
+  const [query, setQuery] = useState('');
+
+  const handleSearch = useCallback(
+    lodashWrapper.debounce((searchTerm) => {
+      console.log('Searching for:', searchTerm);
+    }, 500), 
+    []
+  );
+
+// other code
+```
+
+> ***Wrapper** is not for reducing the bundle size. Wrapper just offers additional flexibility and easier maintenance. If you want to reduce the bundle size, be sure to use direct imports in your project.*
+
+### Visual representation
+
+Because we used direct imports, now our build looks like this:
+
+![image credits](/blogs/content/dont-use-react-import-2.webp)
+
+Generated using [vite-bundle-visualizer](https://www.npmjs.com/package/vite-bundle-visualizer).
+
+### But why?
+
+Why should you always create a wrapper for your main libraries?
+
+1. **Developers in the codebase know what to use and import** -With a wrapper, developers don’t need to think about the best way to import a library each time. They just use the predefined optimized wrapper.
+2. **Avoiding Redundant Imports** - If every component manually imports specific thing from lodash for example, there’s a risk that different components may import some different parts of the library.
+3. **Ease of Maintenance** - If a library updates its exports or introduces a more optimized way to import, you only need to update the wrapper file instead of refactoring every single component.
+
+But be careful. There are some downsides such as:
+
+- **Added Complexity** - Wrappers introduce an extra layer of abstraction.
+- **Increased File Count** — If you create multiple specialized wrappers (e.g., `lodashWrapper.tsx`, `motionWrapper.tsx`), you might end up with too many additional files, making navigation harder.
+
+### How to choose the right library?
+
+When selecting a library, it’s essential to consider how it handles imports. For example, if you’re deciding between `Recharts` and `Nivo charts`, one major factor is how they manage imports.
+
+**Recharts** does not yet support direct imports for individual components, meaning you must import the entire library, which increases the bundle size.
+
+*Nivo*, on the other hand, allows tree-shakable imports, meaning you can import only the **specific chart components** you need, reducing the final bundle size.
+
+Example of how **Recharts** forces large imports:
+
+```jsx
+import { BarChart } from 'recharts'; // Includes unnecessary code
+```
+
+With *Nivo*, you can optimize your imports:
+
+```jsx
+import { ResponsiveBar } from '@nivo/bar' // smaller size
+```
+
+This flexibility makes Nivo a better choice for performance-conscious applications.
+
+**Notes:**
+
+1. This section was not intended to criticize **Recharts** but was used for a practical demonstration.
+2. **Recharts** will address this issue in the upcoming v3. You can check my opened issue in their repository.
+
+### How to track imports size?
+
+You can easily track how much you’ve imported in a Visual Studio Code using the VS Code “Import Cost” extension.
+
+
+
+
+
+
+
+
+
+
+
+
+

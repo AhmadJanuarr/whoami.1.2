@@ -17,8 +17,9 @@ const FavoriteSongItem = () => (
         alt="Novo Amor"
         width={300}
         height={300}
-        className="w-[180px] object-cover  lg:w-full"
-        loading="lazy"
+        className="w-[180px] object-cover lg:w-full"
+        priority
+        sizes="(max-width: 768px) 180px, 300px"
       />
     </div>
   </GridCard>
@@ -44,7 +45,7 @@ const PhotographyItem = () => (
             width={64}
             height={64}
             className="h-16 w-16 rounded-lg object-cover opacity-90"
-            loading="lazy"
+            sizes="64px"
           />
         ))}
       </div>
@@ -90,7 +91,14 @@ const BooksItem = () => (
               className={`absolute ${book.position.left} ${book.position.top} ${book.position.rotate} transition-transform duration-300 hover:scale-110`}
             >
               <div className="h-32 w-24 overflow-hidden rounded-lg shadow-lg md:h-40 md:w-32">
-                <Image src={book.src} alt={book.alt} width={128} height={160} className="h-full w-full object-cover" loading="lazy" />
+                <Image
+                  src={book.src}
+                  alt={book.alt}
+                  width={128}
+                  height={160}
+                  className="h-full w-full object-cover"
+                  sizes="(max-width: 768px) 96px, 128px"
+                />
               </div>
             </div>
           ))}

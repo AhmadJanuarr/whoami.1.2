@@ -2,43 +2,18 @@ import { ArticleReactionWrapper } from "@/components/ArticleReactionWrapper"
 import { CrossLine } from "@/components/CrossLine"
 import { NewsLetterSection } from "@/components/ui/NewsLetterSection"
 import { getAllPosts, getPostBySlug } from "@/lib/mdx"
-import { unstable_noStore } from "next/cache"
-import { PiCalendarBlank } from "react-icons/pi"
 import { notFound } from "next/navigation"
-import { Suspense } from "react"
-import Image from "next/image"
+import { PiCalendarBlank } from "react-icons/pi"
 import MDXContent from "@/components/MDXContent"
+import Image from "next/image"
 
-function formatDate(date: string) {
-  unstable_noStore()
-  let currentDate = new Date()
-  if (!date.includes("T")) {
-    date = `${date}T00:00:00`
-  }
-  let targetDate = new Date(date)
-
-  let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear()
-  let monthsAgo = currentDate.getMonth() - targetDate.getMonth()
-  let daysAgo = currentDate.getDate() - targetDate.getDate()
-
-  let formattedDate = ""
-  if (yearsAgo > 0) {
-    formattedDate = `${yearsAgo}y ago`
-  } else if (monthsAgo > 0) {
-    formattedDate = `${monthsAgo}mo ago`
-  } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`
-  } else {
-    formattedDate = "Today"
-  }
-
-  let fullDate = targetDate.toLocaleString("en-us", {
+function getFormattedDate(date: string) {
+  const targetDate = new Date(date.includes("T") ? date : `${date}T00:00:00`)
+  return targetDate.toLocaleDateString("en-US", {
+    year: "numeric",
     month: "long",
     day: "numeric",
-    year: "numeric",
   })
-
-  return `${fullDate} (${formattedDate})`
 }
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
@@ -50,16 +25,16 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
   const allPosts = getAllPosts()
   const relatedPosts = allPosts.filter((p) => p.slug !== params.slug && p.category?.some((c) => post.category?.includes(c))).slice(0, 3)
-
+  const formattedDate = getFormattedDate(post.date)
   return (
     <section className="w-full overflow-hidden">
-      <div className="relative mt-16 h-[530px] w-full bg-cover bg-center lg:mt-0" style={{ backgroundImage: `url(${post.coverImage})` }}>
+      <div className="relative mt-16 h-[400px] w-full bg-cover bg-center lg:mt-0 lg:h-[530px]" style={{ backgroundImage: `url(${post.coverImage})` }}>
         <CrossLine />
-        <div className="flex h-full items-end p-6 px-8 lg:p-14 lg:px-16">
-          <div className="max-w-3xl px-4 text-white">
-            <div className="flex gap-2">
+        <div className="flex h-full items-end px-6 py-8 lg:p-14 lg:px-16">
+          <div className="w-full px-4 text-white lg:max-w-3xl">
+            <div className="flex flex-wrap gap-2">
               {post.category?.map((item, index) => (
-                <span key={index} className="mb-4 inline-block rounded-full border px-4 py-1 text-sm font-medium">
+                <span key={index} className="mb-2 inline-block rounded-full border px-3 py-1 text-xs font-medium md:mb-4 md:text-sm">
                   #{item}
                 </span>
               ))}
@@ -68,17 +43,14 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             <p className="sizeSubtitle mb-3 opacity-90 lg:mb-6">{post.summary}</p>
             <time className="sizeSubtitle flex items-center gap-2 text-sm opacity-75">
               <PiCalendarBlank />
-              {formatDate(post.date)}
+              {formattedDate}
             </time>
           </div>
         </div>
       </div>
 
-      <article className="mx-auto w-full p-6 lg:max-w-4xl lg:p-14">
-        <Suspense fallback={<div className="text-gray-500">Loading content...</div>}>
-          {post.content && <MDXContent content={post.content} />}
-        </Suspense>
-      </article>
+      <article className="mx-auto w-full p-6 lg:max-w-4xl lg:p-14">{post.content && <MDXContent content={post.content} />}</article>
+
       <div className="space-y-10 py-14">
         <ArticleReactionWrapper />
       </div>

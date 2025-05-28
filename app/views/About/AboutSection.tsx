@@ -75,7 +75,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
           viewport={{ once: true, amount: 0.5 }}
-          className="sizeTitle max-w-xl px-2 pb-4 text-textPrimary lg:text-[40px]"
+          className="sizeTitle max-w-xl px-2 text-textPrimary lg:text-[40px]"
         >
           The Beginning of My Interest in the World of Code
         </motion.h1>

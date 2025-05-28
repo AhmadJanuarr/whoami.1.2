@@ -44,11 +44,11 @@ function paragraph({ children, ...props }: React.HTMLAttributes<HTMLParagraphEle
     (child) =>
       React.isValidElement(child) &&
       ((typeof child.type === "string" && /^(div|p|ul|ol|h[1-6]|figure|img)$/i.test(child.type)) ||
-        (typeof child.type === "function" && child.type === MDXImage)),
+        (typeof child.type === "function" && (child.type === MDXImage || child.type === Image))),
   )
 
   if (hasBlockElements) {
-    return <>{children}</>
+    return <div className="my-4">{children}</div>
   }
 
   return (
@@ -121,7 +121,7 @@ function MDXImage({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageEleme
   if (!src) return null
 
   return (
-    <figure className="my-8">
+    <div className="my-8">
       <div className="relative mx-auto w-full max-w-3xl">
         <Image
           src={src}
@@ -132,8 +132,8 @@ function MDXImage({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageEleme
           priority
         />
       </div>
-      {alt && <figcaption className="mt-2 text-center text-sm text-gray-500">{alt}</figcaption>}
-    </figure>
+      {alt && <div className="mt-2 text-center text-sm text-gray-500">{alt}</div>}
+    </div>
   )
 }
 

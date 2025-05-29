@@ -23,7 +23,11 @@ function ImageCard({ src, customRotate = "", index }: ImageCardProps) {
     >
       <div className="max-w-48 rounded-3xl border-2 border-zinc-200 p-2">
         <div className="rounded-2xl border-4 border-zinc-200 bg-zinc-100">
-          <img src={src} alt="About section image" className={`h-full w-full ${customRotate} rounded-lg bg-cover object-cover`} />
+          <img
+            src={src}
+            alt="About section image"
+            className={`h-full w-full grayscale transition-all duration-300 hover:grayscale-0 ${customRotate} rounded-lg bg-cover object-cover`}
+          />
         </div>
       </div>
     </motion.div>
@@ -87,7 +91,7 @@ export function AboutSection() {
         </div>
         {/* Section 1 */}
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          <ImageCard src="/assets/images/about-1.png" customRotate="rotate-6" index={0} />
+          <ImageCard src="/assets/images/about-1.jpg" customRotate="rotate-6" index={0} />
           <ContentSection
             title="My programing journey"
             description="It all started with a curiosity about how a website could appear so interactive and interesting. While studying at Universitas Teknokrat Indonesia, I started learning the basics of programming, but it was from personal projects and small freelance projects that I truly understood the essence of building a website. I spent time exploring HTML, CSS, and JavaScript, then fell in love with React.js and Next.js, especially with App Router which gives full control in building elegant and efficient UI/UX."
@@ -101,11 +105,11 @@ export function AboutSection() {
             description="Frontend for me is a creative space, where logic and design work together. I love building clean, consistent, and responsive interfaces—both for mobile and desktop. Some of my favorite tools & technologies: React.js, Next.js (App Router), Tailwind CSS, React Query, Axios, Firebase Supabase, TypeScript, Vercel for super fast deployment"
             index={1}
           />
-          <ImageCard src="/assets/images/about-2.png" customRotate="-rotate-6" index={1} />
+          <ImageCard src="/assets/images/about-2.jpg" customRotate="-rotate-6" index={1} />
         </div>
         {/* Section 3 */}
         <div className="grid grid-cols-1 gap-5 pt-32 lg:grid-cols-2 lg:pt-40">
-          <ImageCard src="/assets/images/about-3.png" customRotate="rotate-6" index={2} />
+          <ImageCard src="/assets/images/about-3.jpg" customRotate="rotate-6" index={2} />
           <ContentSection
             title="Learning Through Real Projects"
             description="During college and after, I worked on many projects such as: Personal portfolio and landing pages Local product or brand websites Custom login/register systems Simple admin dashboards Personal blogs with Markdown and dynamic routes I believe the best way to learn is by building something real."
@@ -120,7 +124,7 @@ export function AboutSection() {
             description="I enjoy trying out UI UX design, writing technical blogs, and sometimes helping friends who need 'task jockeys' 😄. When I'm not coding, I enjoy relaxing while listening to music or exploring the latest technology trends."
             index={3}
           />
-          <ImageCard src="/assets/images/about-4.png" customRotate="-rotate-6" index={3} />
+          <ImageCard src="/assets/images/about-4.jpg" customRotate="-rotate-6" index={3} />
         </div>
       </div>
     </section>

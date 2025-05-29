@@ -4,8 +4,30 @@ import { NewsLetterSection } from "@/components/ui/NewsLetterSection"
 import { getAllPosts, getPostBySlug } from "@/lib/mdx"
 import { notFound } from "next/navigation"
 import { PiCalendarBlank } from "react-icons/pi"
-import MDXContent from "@/components/MDXContent"
+import dynamic from "next/dynamic"
 import Image from "next/image"
+
+// Dynamic imports for non-critical components
+const MDXContent = dynamic(() => import("@/components/MDXContent"), {
+  loading: () => (
+    <div className="animate-pulse space-y-4">
+      <div className="h-4 w-3/4 rounded bg-gray-200"></div>
+      <div className="h-4 rounded bg-gray-200"></div>
+      <div className="h-4 w-5/6 rounded bg-gray-200"></div>
+    </div>
+  ),
+})
+
+// Add revalidate configuration
+export const revalidate = 3600 // Revalidate every hour
+
+// Add generateStaticParams function
+export async function generateStaticParams() {
+  const posts = getAllPosts()
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 function getFormattedDate(date: string) {
   const targetDate = new Date(date.includes("T") ? date : `${date}T00:00:00`)
@@ -26,6 +48,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   const allPosts = getAllPosts()
   const relatedPosts = allPosts.filter((p) => p.slug !== params.slug && p.category?.some((c) => post.category?.includes(c))).slice(0, 3)
   const formattedDate = getFormattedDate(post.date)
+
   return (
     <section className="w-full overflow-hidden">
       <div className="relative mt-16 h-[400px] w-full bg-cover bg-center lg:mt-0 lg:h-[530px]" style={{ backgroundImage: `url(${post.coverImage})` }}>
@@ -64,17 +87,19 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             </div>
           </div>
           <div className="space-y-16">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {relatedPosts.map((post) => (
-                <div key={post.slug}>
+                <div key={post.slug} className="group cursor-pointer">
                   <Image
                     src={post.coverImage}
                     alt={post.title}
                     width={300}
                     height={200}
-                    className="w-full rounded-lg object-cover"
+                    className="w-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
                   />
+                  <h3 className="mt-2 text-sm font-medium text-gray-900 group-hover:text-accentColor">{post.title}</h3>
                 </div>
               ))}
             </div>

@@ -19,7 +19,14 @@ export type Category =
   | "Artificial Intelligence"
   | "Architecture"
   | "Data Science"
+  | "Prompt"
+  | "AI"
+  | "Design"
+  | "Digital Art"
+  | "Technology"
 
 export type CategoryListProps = {
+  selectedCategory: Category
+  setSelectedCategory: (category: Category) => void
   categories: Category[]
 }

@@ -1,6 +1,17 @@
-import Image, { ImageProps } from "next/image"
-import React from "react"
 import type { MDXComponents } from "mdx/types"
+import dynamic from "next/dynamic"
+import Image from "next/image"
+import React from "react"
+
+// Lazy load non-critical components
+const MDXImage = dynamic(() => import("./MDXImage"), {
+  loading: () => (
+    <div className="my-8 animate-pulse">
+      <div className="relative mx-auto h-64 w-full max-w-3xl rounded-lg bg-gray-200"></div>
+    </div>
+  ),
+  ssr: true, // Enable server-side rendering
+})
 
 function slugify(str: string) {
   return str
@@ -13,33 +24,49 @@ function slugify(str: string) {
     .replace(/\-\-+/g, "-")
 }
 
-function createHeading(level: number) {
-  return ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    const slug = slugify(children?.toString() || "")
-    let textSize = "text-4xl"
-    if (level === 2) textSize = "text-2xl md:text-3xl"
-    if (level === 3) textSize = "text-xl md:text-2xl"
-    if (level === 4) textSize = "text-lg md:text-xl"
-    return React.createElement(
-      `h${level}`,
-      {
-        id: slug,
-        className: `${textSize} text-textPrimary font-medium leading-8 mb-6 ${level === 2 ? "mt-8" : "mt-3"} text-balance`,
-        ...props,
-      },
-      [
-        React.createElement("a", {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: "anchor",
-        }),
-      ],
-      children,
-    )
-  }
-}
+// Create heading components
+const Heading1 = React.memo(({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+  const slug = slugify(children?.toString() || "")
+  return (
+    <h1 id={slug} className="mb-6 mt-3 text-balance text-4xl font-medium leading-8 text-textPrimary" {...props}>
+      <a href={`#${slug}`} className="anchor" />
+      {children}
+    </h1>
+  )
+})
 
-function paragraph({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
+const Heading2 = React.memo(({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+  const slug = slugify(children?.toString() || "")
+  return (
+    <h2 id={slug} className="mb-6 mt-8 text-balance text-2xl font-medium leading-8 text-textPrimary md:text-3xl" {...props}>
+      <a href={`#${slug}`} className="anchor" />
+      {children}
+    </h2>
+  )
+})
+
+const Heading3 = React.memo(({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+  const slug = slugify(children?.toString() || "")
+  return (
+    <h3 id={slug} className="mb-6 mt-3 text-balance text-xl font-medium leading-8 text-textPrimary md:text-2xl" {...props}>
+      <a href={`#${slug}`} className="anchor" />
+      {children}
+    </h3>
+  )
+})
+
+const Heading4 = React.memo(({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+  const slug = slugify(children?.toString() || "")
+  return (
+    <h4 id={slug} className="mb-6 mt-3 text-balance text-lg font-medium leading-8 text-textPrimary md:text-xl" {...props}>
+      <a href={`#${slug}`} className="anchor" />
+      {children}
+    </h4>
+  )
+})
+
+// Memoize other components
+const Paragraph = React.memo(({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
   const hasBlockElements = React.Children.toArray(children).some(
     (child) =>
       React.isValidElement(child) &&
@@ -56,7 +83,7 @@ function paragraph({ children, ...props }: React.HTMLAttributes<HTMLParagraphEle
       {children}
     </p>
   )
-}
+})
 
 function OrderedList({ children, ...props }: React.OlHTMLAttributes<HTMLOListElement>) {
   return (
@@ -117,39 +144,19 @@ function Pre({ children, className, ...props }: React.HTMLAttributes<HTMLPreElem
   )
 }
 
-function MDXImage({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) {
-  if (!src) return null
-
-  return (
-    <div className="my-8">
-      <div className="relative mx-auto w-full max-w-3xl">
-        <Image
-          src={src}
-          alt={alt || (typeof src === "string" ? src.split("/").pop() : "Blog image") || "Blog image"}
-          width={800}
-          height={400}
-          className="mx-auto w-full rounded-lg object-cover"
-          priority
-        />
-      </div>
-      {alt && <div className="mt-2 text-center text-sm text-gray-500">{alt}</div>}
-    </div>
-  )
-}
-
+// Export components with memoization
 export const components: MDXComponents = {
-  h1: createHeading(1),
-  h2: createHeading(2),
-  h3: createHeading(3),
-  h4: createHeading(4),
-  p: paragraph,
-  a: Anchor,
-  ul: UnorderedList,
-  ol: OrderedList,
-  li: ListItem,
-  blockquote: Blockquote,
-  code: Code,
-  pre: Pre,
-  Image: MDXImage,
+  h1: Heading1,
+  h2: Heading2,
+  h3: Heading3,
+  h4: Heading4,
+  p: Paragraph,
+  a: React.memo(Anchor),
+  ul: React.memo(UnorderedList),
+  ol: React.memo(OrderedList),
+  li: React.memo(ListItem),
+  blockquote: React.memo(Blockquote),
+  code: React.memo(Code),
+  pre: React.memo(Pre),
   img: MDXImage,
 } as const

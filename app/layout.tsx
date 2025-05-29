@@ -31,12 +31,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="antialiased" suppressHydrationWarning>
-        <SmoothScrollProvider>
-          <Appshell className={`${aspekta.variable} relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
-            <ScrollToTop />
-            {children}
-          </Appshell>
-        </SmoothScrollProvider>
+        <Appshell className={`${aspekta.variable} relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
+          <ScrollToTop />
+          {children}
+        </Appshell>
       </body>
     </html>
   )

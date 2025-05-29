@@ -1,0 +1,38 @@
+import Image from "next/image"
+import Link from "next/link"
+
+export type Post = {
+  slug: string
+  title: string
+  date: string
+  summary: string
+  coverImage: string
+  imageName: string
+  category: string[]
+  content: string
+}
+
+export function LatesBlog({ latestPosts }: { latestPosts: Post[] }) {
+  return (
+    <div className="grid grid-cols-1 gap-6 px-4 md:grid-cols-2 lg:grid-cols-3">
+      {latestPosts.map((post) => (
+        <div key={post.slug} className="sizeSubtitle group cursor-pointer rounded-xl border border-borderPrimary bg-white">
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            width={300}
+            height={200}
+            className="w-full rounded-t-lg object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
+          />
+          <Link href={`/blog/${post.slug}`} className="flex flex-col p-4" scroll={true}>
+            <p className="text-sm text-textSecondary">{post.date}</p>
+            <h3 className="mt-2 h-14 font-medium text-gray-900 hover:text-accentColor group-hover:text-accentColor">{post.title}</h3>
+            <p className="text-gray-500">{post.summary}</p>
+          </Link>
+        </div>
+      ))}
+    </div>
+  )
+}

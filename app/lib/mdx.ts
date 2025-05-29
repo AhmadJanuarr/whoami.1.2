@@ -4,6 +4,11 @@ import matter from "gray-matter"
 
 const postsDirectory = path.join(process.cwd(), "content")
 
+// Add cache for posts
+let postsCache: Post[] | null = null
+let lastFetchTime = 0
+const CACHE_DURATION = 3600 * 1000 // 1 hour in milliseconds
+
 export type Post = {
   slug: string
   title: string
@@ -50,6 +55,12 @@ export function getPostBySlug(slug: string): Post | null {
 
 export function getAllPosts(): Post[] {
   try {
+    // Check cache first
+    const now = Date.now()
+    if (postsCache && now - lastFetchTime < CACHE_DURATION) {
+      return postsCache
+    }
+
     if (!fs.existsSync(postsDirectory)) {
       console.error(`Posts directory not found: ${postsDirectory}`)
       return []
@@ -61,6 +72,10 @@ export function getAllPosts(): Post[] {
       .map((file) => getPostBySlug(file))
       .filter((post): post is Post => post !== null)
       .sort((a, b) => (a.date < b.date ? 1 : -1))
+
+    // Update cache
+    postsCache = posts
+    lastFetchTime = now
 
     return posts
   } catch (error) {

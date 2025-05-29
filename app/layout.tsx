@@ -4,6 +4,7 @@ import { SmoothScrollProvider } from "@/components/provider/ScrollProvider"
 import localFont from "next/font/local"
 import Appshell from "@/components/Layout/appshell"
 import "./globals.css"
+import ScrollToTop from "./components/ScrollToTop"
 
 export const metadata = {
   title: "Maddlab.dev",
@@ -12,7 +13,12 @@ export const metadata = {
     icon: "/icons/favicon.ico",
   },
 }
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
 
 const aspekta = localFont({
   src: [
@@ -34,6 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="antialiased" suppressHydrationWarning>
         <SmoothScrollProvider>
           <Appshell className={`${aspekta.variable} ${inter.variable} relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
+            <ScrollToTop />
             {children}
           </Appshell>
         </SmoothScrollProvider>

@@ -49,6 +49,7 @@ export const HeaderWrapper = () => {
             {NAV_ITEMS.map((item, index) => (
               <li
                 key={index}
+                id={item.label.toLowerCase()}
                 className={`${item.isActive ? "border-textPrimary font-bold" : "font-medium text-textSecondary"} cursor-pointer`}
                 onClick={() => {
                   item.onClick()

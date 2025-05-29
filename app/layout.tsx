@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google"
 import { ReactNode } from "react"
 import { SmoothScrollProvider } from "@/components/provider/ScrollProvider"
 import localFont from "next/font/local"
@@ -13,12 +12,6 @@ export const metadata = {
     icon: "/icons/favicon.ico",
   },
 }
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
 
 const aspekta = localFont({
   src: [
@@ -39,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className="antialiased" suppressHydrationWarning>
         <SmoothScrollProvider>
-          <Appshell className={`${aspekta.variable} ${inter.variable} relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
+          <Appshell className={`${aspekta.variable} relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
             <ScrollToTop />
             {children}
           </Appshell>

@@ -4,8 +4,8 @@ import FooterColumn from "./FooterColumn"
 const NAV_ITEMS = [
   {
     title: "NAVIGATE",
-    links: ["Home", "About", "Project", "Uses"],
-    url: ["/", "/about", "/projects", "/uses"],
+    links: ["Home", "About", "Blog", "Project", "Toolbox"],
+    url: ["/", "/about", "/blog", "/projects", "/toolbox"],
   },
   {
     title: "BUILD",

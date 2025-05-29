@@ -1,9 +1,7 @@
 "use client"
-import { Category, CategoryListProps } from "@/types/components"
-import { useState } from "react"
+import { CategoryListProps } from "@/types/components"
 
-export default function CategoryList({ categories }: CategoryListProps) {
-  const [selectedCategory, setSelectedCategory] = useState<Category>("All")
+export default function CategoryList({ categories, selectedCategory, setSelectedCategory }: CategoryListProps) {
   return (
     <div className="no-scrollbar overflow-x-auto py-1">
       <ul className="flex gap-3 whitespace-nowrap px-1 text-sm text-gray-600">

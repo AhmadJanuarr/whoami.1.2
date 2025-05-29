@@ -13,6 +13,7 @@ export default function BlogCardList({ post, index }: BlogCardListProps) {
   const router = useRouter()
   const handleClick = () => {
     router.push(`/blog/${post.slug}`)
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
   return (
     <motion.div

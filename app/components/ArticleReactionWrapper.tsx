@@ -7,7 +7,7 @@ const ReactionButton = ({ icon, text, onClick, isActive }: { icon: React.ReactNo
   return (
     <button onClick={onClick} className={`flex items-center gap-2 rounded-full border bg-[#F1F5F9] px-4 py-2 transition-all`}>
       {icon}
-      <span className="text-sm text-textSecondary">{text}</span>
+      <span className="text-sm tracking-wider text-textSecondary">{text}</span>
     </button>
   )
 }
@@ -20,7 +20,6 @@ export const ArticleReactionWrapper = () => {
     <div className="flex w-full items-center justify-center">
       <div className="flex max-w-sm gap-5 rounded-full">
         <ReactionButton icon={<PiHeartStraight size={15} />} text={liked ? "Liked" : "Like"} onClick={() => setLiked(!liked)} isActive={liked} />
-
         <ReactionButton
           icon={<PiBookmarkSimple size={15} />}
           text={bookmarked ? "Saved" : "Save"}

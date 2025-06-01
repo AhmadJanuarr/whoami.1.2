@@ -11,7 +11,7 @@ export function NewsLetterSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative my-20 flex w-full flex-col items-center justify-start overflow-hidden bg-[#3C3C3F] px-10  lg:rounded-3xl"
+      className="relative my-20 flex w-full flex-col items-center justify-start overflow-hidden bg-[#3C3C3F] px-10 lg:rounded-3xl"
     >
       <CrossLine />
       <motion.div
@@ -19,7 +19,7 @@ export function NewsLetterSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="flex max-w-2xl flex-col items-center gap-6 px-5 py-28 text-left"
+        className="flex max-w-3xl flex-col items-center gap-6 px-5 py-28"
       >
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

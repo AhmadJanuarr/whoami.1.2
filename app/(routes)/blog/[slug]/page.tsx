@@ -7,6 +7,7 @@ import { notFound } from "next/navigation"
 import { PiCalendarBlank } from "react-icons/pi"
 import { LatesBlog } from "./LatestBlog"
 import dynamic from "next/dynamic"
+import MDXContent from "@/components/MDXContent"
 
 export const revalidate = 3600
 
@@ -46,16 +47,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-const MDXContent = dynamic(() => import("@/components/MDXContent"), {
-  loading: () => (
-    <div className="animate-pulse space-y-4">
-      <div className="h-4 w-3/4 rounded bg-gray-200"></div>
-      <div className="h-4 rounded bg-gray-200"></div>
-      <div className="h-4 w-5/6 rounded bg-gray-200"></div>
-    </div>
-  ),
-})
-
 export async function generateStaticParams() {
   const posts = getAllPosts()
   if (!posts) []
@@ -84,7 +75,6 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   const allPosts = getAllPosts()
 
   // const relatedPosts = allPosts.filter((p) => p.slug !== params.slug && p.category?.some((c) => post.category?.includes(c))).slice(0, 3)
-
   const latestPosts = allPosts
     .filter((p) => p.slug !== params.slug)
     .sort((a, b) => {
@@ -119,7 +109,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       </div>
       <article className="mx-auto w-full p-6 lg:max-w-4xl lg:p-14">{post.content && <MDXContent content={post.content} />}</article>
       <div className="space-y-10 ">
-        <ArticleReactionWrapper />
+        <ArticleReactionWrapper postId={post.slug} />
       </div>
       {latestPosts.length > 0 && (
         <>

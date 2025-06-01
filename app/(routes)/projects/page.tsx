@@ -1,11 +1,11 @@
 "use client"
-import { PROJECT_LIST, ProjectCardProps } from "@/datas/project-list"
+import { PROJECTS, ProjectProps } from "@/datas/project-list"
 import { motion } from "framer-motion"
 import { PiArrowArcRight } from "react-icons/pi"
-import FollowerPointerCard from "@/components/ui/follower-pointer-card"
 import Link from "next/link"
+import FollowerPointerCard from "@/components/ui/follower-pointer-card"
 
-const ProjectCard = ({ imageSrc, imageAlt, title, description, link, linkText }: ProjectCardProps) => {
+const ProjectCard = ({ image, title, description, href }: ProjectProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
@@ -15,9 +15,9 @@ const ProjectCard = ({ imageSrc, imageAlt, title, description, link, linkText }:
       className="relative mb-10 rounded-3xl"
     >
       <FollowerPointerCard title="View Project">
-        <Link href={link} target="_blank" rel="noopener noreferrer">
+        <Link href={href} target="_blank" rel="noopener noreferrer">
           <div className="relative flex h-[250px] items-center justify-center overflow-hidden rounded-xl border border-borderPrimary bg-[#FCFCFC] p-4 md:h-[500px] md:p-8 lg:h-[700px] lg:p-16">
-            <img src={imageSrc} alt={imageAlt} className="h-auto w-full rounded-xl border border-borderPrimary object-cover object-center" />
+            <img src={image} alt={title} className="h-auto w-full rounded-xl border border-borderPrimary object-cover object-center" />
           </div>
         </Link>
       </FollowerPointerCard>
@@ -27,12 +27,12 @@ const ProjectCard = ({ imageSrc, imageAlt, title, description, link, linkText }:
           <p className="lg:sizeSubtitle text-sm leading-relaxed text-gray-400/90 md:text-base">{description}</p>
         </div>
         <Link
-          href={link}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
           className="group/link inline-flex w-fit items-center gap-1 text-xs font-medium text-accentColor transition-all hover:text-accentColor/90 md:gap-2 md:text-sm"
         >
-          <span className="border-b border-transparent transition-colors group-hover/link:border-accentColor/90">{linkText}</span>
+          <span className="border-b border-transparent transition-colors group-hover/link:border-accentColor/90">View Project</span>
           <PiArrowArcRight className="h-3 w-3 transition-transform group-hover/link:translate-x-1 md:h-4 md:w-4" />
         </Link>
       </div>
@@ -50,7 +50,7 @@ export default function Projects() {
         </div>
       </div>
       <div className="mx-auto w-full max-w-6xl px-4">
-        {PROJECT_LIST.map((project, index) => (
+        {PROJECTS.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
       </div>

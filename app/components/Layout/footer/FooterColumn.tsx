@@ -13,12 +13,7 @@ export default function FooterColumn({ title, links, url }: FooterProps) {
       <ul>
         {links.map((item, index) =>
           url[index] ? (
-            <Link
-              key={index}
-              href={url[index]}
-              passHref
-              target={["/", "/about", "/contact", "/projects", "/uses"].includes(url[index]) ? "_self" : "_blank"}
-            >
+            <Link key={index} href={url[index]} passHref>
               <li className="mb-5 cursor-pointer text-textSecondary hover:underline dark:text-white">{item}</li>
             </Link>
           ) : (

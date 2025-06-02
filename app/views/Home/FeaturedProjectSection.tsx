@@ -26,7 +26,7 @@ export function FeaturedProjectSection() {
             {PROJECTS.slice(0, 3).map((project) => (
               <FollowerPointerCard key={project.id} title={<TitleComponent title={project.author} avatar={project.authorAvatar} />}>
                 <div className="group relative h-full overflow-hidden rounded-2xl border border-zinc-100 bg-white transition duration-300">
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-tl-lg rounded-tr-lg bg-gray-100">
+                  <div className="relative aspect-auto w-full overflow-hidden rounded-tl-lg rounded-tr-lg bg-gray-100">
                     <img
                       src={project.image}
                       alt={project.title}

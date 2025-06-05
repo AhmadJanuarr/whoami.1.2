@@ -18,12 +18,18 @@ const ReactionButton = ({ icon, text, onClick, isActive }: { icon: React.ReactNo
 
 export const ArticleReactionWrapper = ({ postId }: { postId: string }) => {
   const { count: likeCount, liked } = useLikeCounter(postId)
-  const [isLiked, setIsLiked] = useState<boolean | null>(null)
   const [bookmarked, setBookmarked] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleLike = async () => {
-    const newLiked = await ToggleLike(postId)
-    setIsLiked(newLiked ?? null)
+    try {
+      setIsLoading(true)
+      await ToggleLike(postId)
+    } catch (error) {
+      console.error("Error toggling like:", error)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -31,7 +37,7 @@ export const ArticleReactionWrapper = ({ postId }: { postId: string }) => {
       <div className="flex max-w-sm gap-5 rounded-full">
         <ReactionButton
           icon={<PiHeartStraight size={15} className={liked ? "text-red-500" : ""} />}
-          text={isLiked ? "like" : "Likes"}
+          text={likeCount > 0 ? `${likeCount}` : "Like"}
           onClick={handleLike}
           isActive={liked}
         />

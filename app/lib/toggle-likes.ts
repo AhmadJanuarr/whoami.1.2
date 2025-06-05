@@ -25,17 +25,49 @@ export const ToggleLike = async (postId: string) => {
 
 export const useLikeCounter = (postId: string) => {
   const [likes, setLikes] = useState<string[]>([])
-  const clientId = useMemo(() => getUserId(), []) // hanya dipanggil sekali
+  const clientId = useMemo(() => getUserId(), [])
 
   useEffect(() => {
+    if (!postId) {
+      console.warn("No postId provided to useLikeCounter")
+      return
+    }
     const postRef = ref(database, `likes/${postId}`)
-    const unsubscribe = onValue(postRef, (snapshot) => {
-      const data = snapshot.val() || {}
-      const likedClientIds = Object.keys(data).filter((id) => data[id] === true)
-      setLikes(likedClientIds)
-    })
 
-    return () => unsubscribe()
+    const unsubscribe = onValue(
+      postRef,
+      (snapshot) => {
+        try {
+          // Ambil data dari snapshot
+          const data = snapshot.val()
+          if (data) {
+            // Konversi object menjadi array of user IDs yang like
+            const likedClientIds = Object.entries(data)
+              .filter(([_, value]) => value === true)
+              .map(([key]) => key)
+
+            console.log("Processed liked users:", likedClientIds)
+            setLikes(likedClientIds)
+          } else {
+            setLikes([]) // Jika tidak ada data, set empty array
+          }
+        } catch (error) {
+          console.error("Error processing realtime data:", error)
+          setLikes([])
+        }
+      },
+      (error) => {
+        // Handle error dari realtime listener
+        console.error("Realtime listener error:", error)
+        setLikes([])
+      },
+    )
+
+    // Cleanup subscription ketika component unmount
+    return () => {
+      console.log("Cleaning up realtime listener")
+      unsubscribe()
+    }
   }, [postId])
 
   return {

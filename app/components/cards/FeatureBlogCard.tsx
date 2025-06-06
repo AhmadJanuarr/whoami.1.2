@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Post } from "@/lib/mdx"
 import SpotlightCard from "../ui/spotlight-card"
 import Image from "next/image"
+import Link from "next/link"
 
 const cardVariants = {
   hidden: { y: 20, opacity: 0 },
@@ -21,7 +22,7 @@ export const FeatureBlogCard = ({ blog }: { blog: Post }) => {
   return (
     <motion.div key={blog.slug} variants={cardVariants}>
       <SpotlightCard className="group flex h-full flex-col overflow-hidden" spotlightColor="rgba(61, 144, 215, 0.2)">
-        <div className="relative h-64 w-full overflow-hidden rounded-xl">
+        <Link href={`/blog/${blog.slug}`} className="relative h-64 w-full overflow-hidden rounded-xl">
           <Image
             src={blog.coverImage}
             alt={blog.title}
@@ -31,7 +32,7 @@ export const FeatureBlogCard = ({ blog }: { blog: Post }) => {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        </div>
+        </Link>
         <div className="sizeSubtitle mt-6 flex flex-col gap-4 p-2">
           <div className="flex items-center gap-3">
             <span className="rounded-full py-1 text-xs font-medium">{category}</span>

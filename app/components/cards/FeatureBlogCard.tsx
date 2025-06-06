@@ -22,14 +22,14 @@ export const FeatureBlogCard = ({ blog }: { blog: Post }) => {
   return (
     <motion.div key={blog.slug} variants={cardVariants}>
       <SpotlightCard className="group flex h-full flex-col overflow-hidden" spotlightColor="rgba(61, 144, 215, 0.2)">
-        <Link href={`/blog/${blog.slug}`} className="relative h-64 w-full overflow-hidden rounded-xl">
+        <Link href={`/blog/${blog.slug}`} className="relative h-64 w-full overflow-hidden rounded-lg">
           <Image
             src={blog.coverImage}
             alt={blog.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </Link>

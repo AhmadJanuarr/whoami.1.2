@@ -1,9 +1,10 @@
 import { ReactNode } from "react"
-import { SmoothScrollProvider } from "@/components/provider/ScrollProvider"
+import { ChatLauncher } from "./components/chatbot/ChatLauncher"
+import { DarkModeProvider } from "./context/themes/theme-provider"
 import localFont from "next/font/local"
 import Appshell from "@/components/Layout/appshell"
-import "./globals.css"
 import ScrollToTop from "./components/ScrollToTop"
+import "./globals.css"
 
 export const metadata = {
   title: "Maddlab.dev",
@@ -31,10 +32,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="antialiased" suppressHydrationWarning>
-        <Appshell className={`${aspekta.variable} relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
-          <ScrollToTop />
-          {children}
-        </Appshell>
+        <DarkModeProvider>
+          <Appshell className={`${aspekta.variable} `}>
+            <ScrollToTop />
+            {children}
+          </Appshell>
+        </DarkModeProvider>
       </body>
     </html>
   )

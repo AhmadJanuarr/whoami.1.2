@@ -23,7 +23,7 @@ const NAV_ITEMS = [
   },
 ]
 
-export default function FooterWrapper() {
+export const FooterWrapper = () => {
   return (
     <footer className="w-full border-t bg-backgroundSecondary pt-5 lg:py-16">
       <div className="sizeSubtitle mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -13,7 +13,6 @@ export const ChatMessage = () => {
   const [timeSeparator, setTimeSeparator] = useState(false)
 
   const handleTemplateClick = (question: string) => {
-    // Add user message immediately
     setMessages((prev) => [...prev, { text: question, isUser: true }])
     setIsOpenTemplate(false)
 
@@ -21,16 +20,13 @@ export const ChatMessage = () => {
     if (template) {
       setTimeSeparator(true)
 
-      // Add typing indicator after a short delay
       setTimeout(() => {
         setIsTyping(true)
-
-        // Add bot message after typing delay
         setTimeout(() => {
           setMessages((prev) => [...prev, { text: template.a, isUser: false, links: template.links }])
           setIsTyping(false)
-        }, 1500) // 1.5 second delay for typing
-      }, 500) // 0.5 second delay before showing typing
+        }, 1500)
+      }, 500)
     }
   }
 

@@ -60,8 +60,6 @@ export const ChatLauncher = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <AnimatePresence>{isOpenChat && <ChatWindow setIsOpenChat={setIsOpenChat} />}</AnimatePresence>
-
-      {/* Chat Launcher Button */}
       <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => setIsOpenChat(!isOpenChat)} className="group relative">
         <motion.div
           initial={false}

@@ -2,13 +2,13 @@
 
 import { useRouter, usePathname } from "next/navigation"
 import { useState } from "react"
-import { PiGithubLogo, PiInstagramLogo, PiLinkedinLogo, PiList, PiSun, PiX } from "react-icons/pi"
+import { PiGithubLogo, PiInstagramLogo, PiLinkedinLogo, PiList, PiMoon, PiSun, PiX } from "react-icons/pi"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/context/themes/useTheme"
 
 export const HeaderWrapper = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-  const { toggleTheme } = useTheme()
+  const { toggleTheme, theme } = useTheme()
   const router = useRouter()
   const pathname = usePathname()
 
@@ -63,10 +63,10 @@ export const HeaderWrapper = () => {
           </ul>
         </div>
 
-        <div className="hidden justify-end md:flex">
+        <div className="hidden justify-end gap-2 md:flex">
           <div className="flex items-center gap-2">
             <button className="rounded-full border p-2 text-2xl" onClick={() => toggleTheme()}>
-              <PiSun className="text-2xl" />
+              {theme === "light" ? <PiSun className="text-2xl" /> : <PiMoon className="text-2xl" />}
             </button>
           </div>
           <div className="flex gap-5 rounded-full border px-4 py-2">

@@ -47,7 +47,7 @@ export function FeaturedProjectSection() {
                     </h2>
                     <p className="line-clamp-3 font-normal text-textSecondary">{project.description}</p>
                     <Link
-                      href={`/project/${project.id}`}
+                      href={project.href}
                       className="sizeSubtitle rounded-xl bg-zinc-100 px-4 py-2 text-center text-sm text-textSecondary transition-all duration-200 hover:font-semibold hover:text-textPrimary"
                     >
                       View Project

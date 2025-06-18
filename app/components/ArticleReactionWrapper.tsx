@@ -1,9 +1,9 @@
 "use client"
 
 import { ToggleLike, useLikeCounter } from "@/lib/toggle-likes"
+import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import { PiBookmarkSimple, PiHeartStraight, PiShareFat } from "react-icons/pi"
-import { motion, AnimatePresence } from "framer-motion"
 
 const ReactionButton = ({
   icon,

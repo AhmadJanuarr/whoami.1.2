@@ -53,8 +53,8 @@ function ContentSection({ title, description, index }: ContentSectionProps) {
       viewport={{ once: true, amount: 0.3 }}
       className="flex flex-col gap-8"
     >
-      <h1 className="sizeTitle text-textPrimary lg:text-[30px]">{title}</h1>
-      <p className="sizeSubtitle leading-loose text-textSecondary">{description}</p>
+      <h1 className="sizeTitle text-textPrimary dark:text-textDarkPrimary lg:text-[30px]">{title}</h1>
+      <p className="sizeSubtitle leading-loose text-textSecondary dark:text-textDarkSecondary">{description}</p>
     </motion.div>
   )
 }
@@ -79,7 +79,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
           viewport={{ once: true, amount: 0.5 }}
-          className="sizeTitle max-w-xl px-2 text-textPrimary lg:text-[40px]"
+          className="sizeTitle max-w-xl px-2 text-textPrimary dark:text-textDarkPrimary lg:text-[40px]"
         >
           The Beginning of My Interest in the World of Code
         </motion.h1>

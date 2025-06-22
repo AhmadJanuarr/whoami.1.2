@@ -6,7 +6,7 @@ export function SkillSection() {
     <section className="relative w-full overflow-hidden">
       <div className="my-10 text-center md:my-16">
         <h2 className="border-y py-2 text-sm font-medium uppercase tracking-wider text-accentColor">Abilities</h2>
-        <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b py-4 text-textPrimary md:py-5">
+        <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b py-4 text-textPrimary dark:text-textDarkPrimary md:py-5">
           <h1 className="sizeTitle max-w-sm text-2xl">My abilities and will develop further</h1>
         </div>
       </div>

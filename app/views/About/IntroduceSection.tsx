@@ -70,7 +70,7 @@ export function IntroduceSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="sizeTitle border-t py-2 text-center font-semibold lg:max-w-2xl lg:border-none lg:py-0 lg:text-left"
+            className="sizeTitle border-t py-2 text-center font-semibold dark:text-textDarkPrimary lg:max-w-2xl lg:border-none lg:py-0 lg:text-left"
           >
             I'm Ahmad Januar, a creative frontend Developer.
           </motion.h1>

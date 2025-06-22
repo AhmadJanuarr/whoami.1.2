@@ -6,7 +6,7 @@ export const GridCard = ({ children, className, href, isButton = false }: BentoC
   return (
     <Link
       href={href ?? ""}
-      className={`group relative flex overflow-hidden rounded-xl border bg-zinc-50/50 transition-all duration-300 hover:bg-white/80 ${className}`}
+      className={`dark:bg-bgDarkSecondary group relative flex overflow-hidden rounded-xl border bg-zinc-50/50 transition-all duration-300 hover:bg-white/80 ${className}`}
     >
       <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-gradient-to-br from-blue-500/20 to-gray-500/20 opacity-0 blur-3xl transition-all duration-300 group-hover:opacity-100 group-hover:blur-2xl" />
       {isButton && (

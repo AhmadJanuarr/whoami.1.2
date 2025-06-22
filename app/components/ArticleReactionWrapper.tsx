@@ -35,7 +35,7 @@ const ReactionButton = ({
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -5 }}
-          className="text-sm tracking-wider text-textSecondary"
+          className="text-sm tracking-wider text-textSecondary dark:text-textDarkSecondary"
         >
           {text}
         </motion.span>

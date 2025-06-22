@@ -23,8 +23,8 @@ const ProjectCard = ({ image, title, description, href }: ProjectProps) => {
       </FollowerPointerCard>
       <div className="mt-4 flex flex-col gap-3 md:mt-6 md:gap-4 lg:mt-8 lg:gap-6">
         <div className="max-w-2xl space-y-2 md:space-y-3">
-          <h2 className="text-xl font-bold tracking-tight text-textPrimary md:text-2xl lg:text-3xl">{title}</h2>
-          <p className="lg:sizeSubtitle text-sm leading-relaxed text-gray-400/90 md:text-base">{description}</p>
+          <h2 className="text-xl font-bold tracking-tight text-textPrimary dark:text-textDarkPrimary md:text-2xl lg:text-3xl">{title}</h2>
+          <p className="lg:sizeSubtitle text-sm leading-relaxed text-gray-400/90 dark:text-textDarkSecondary md:text-base">{description}</p>
         </div>
         <Link
           href={href}
@@ -46,7 +46,9 @@ export default function Projects() {
       <div className="mb-16 text-center">
         <div className="h-28 w-full border-b lg:h-14" />
         <div className=" mx-auto flex w-full items-center justify-center border-y py-5">
-          <h1 className="sizeTitle max-w-xl font-semibold text-textPrimary lg:text-[40px]">A collection of my favorite works.</h1>
+          <h1 className="sizeTitle max-w-xl font-semibold text-textPrimary dark:text-textDarkPrimary lg:text-[40px]">
+            A collection of my favorite works.
+          </h1>
         </div>
       </div>
       <div className="mx-auto w-full max-w-6xl px-4">

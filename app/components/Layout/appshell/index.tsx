@@ -9,7 +9,7 @@ type AppShellProps = {
 
 const Appshell = ({ className, children }: AppShellProps) => {
   return (
-    <main className={`${className} relative min-h-screen overflow-hidden bg-backgroundPrimary dark:bg-zinc-800`}>
+    <main className={`${className} dark:bg-bgDarkPrimary dark:text-textDarkPrimary relative min-h-screen overflow-hidden bg-backgroundPrimary`}>
       <div className="relative mx-auto flex min-h-screen w-full flex-col justify-center overflow-hidden border lg:max-w-[1200px] xl:max-w-[1400px]">
         <HeaderWrapper />
         <div className="grid w-full grid-cols-1 lg:grid-cols-[32px_auto_32px] xl:grid-cols-[32px_1fr_32px]">

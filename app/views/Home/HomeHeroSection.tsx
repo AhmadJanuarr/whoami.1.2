@@ -38,20 +38,19 @@ export function HomeHeroSection() {
       <div className="flex w-full items-center justify-center overflow-hidden border-b border-borderPrimary">
         <div className="flex w-full max-w-3xl flex-col items-center justify-center">
           {lines.map((line, index) => (
-            <div key={index} className="">
-              <motion.h1
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeInOut",
-                  delay: index * 0.3,
-                }}
-                className="sizeTitle text-center font-semibold"
-              >
-                {line}
-              </motion.h1>
-            </div>
+            <motion.span
+              key={index}
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeInOut",
+                delay: index * 0.3,
+              }}
+              className="sizeTitle dark:text-textDarkPrimary text-center font-semibold"
+            >
+              {line}
+            </motion.span>
           ))}
         </div>
       </div>
@@ -63,7 +62,7 @@ export function HomeHeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="sizeSubtitle flex w-full max-w-3xl items-center justify-center px-5 py-5 text-center text-textSecondary lg:px-0"
+          className="sizeSubtitle dark:text-textDarkSecondary flex w-full max-w-3xl items-center justify-center px-5 py-5 text-center text-textSecondary lg:px-0"
         >
           Welcome to my digital experimentation place! I am a front-end developer who loves to design and tinker. This website is my playroom to try
           out new ideas and share interesting things!

@@ -25,19 +25,19 @@ const NAV_ITEMS = [
 
 export const FooterWrapper = () => {
   return (
-    <footer className="w-full border-t bg-backgroundSecondary pt-5 lg:py-16">
+    <footer className="w-full border-t bg-backgroundSecondary pt-5 dark:bg-bgDarkSecondary lg:py-16">
       <div className="sizeSubtitle mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col space-y-12 md:flex-row md:space-x-12 md:space-y-0">
           <div className="flex flex-col space-y-6 md:w-2/5">
             <div className="flex items-center space-x-4">
               <img src="/icons/favicon.ico" alt="Ahmad Januar A" width={40} height={40} className="rounded-full ring-2 ring-gray-100" />
               <div>
-                <h1 className="text-textPrimary">Ahmad Januar A</h1>
-                <p className="text-textSecondary">Front End Developer</p>
+                <h1 className="text-textPrimary dark:text-textDarkPrimary">Ahmad Januar A</h1>
+                <p className="text-textSecondary dark:text-textDarkSecondary">Front End Developer</p>
               </div>
             </div>
 
-            <p className="leading-relaxed text-textSecondary ">
+            <p className="leading-relaxed text-textSecondary dark:text-textDarkSecondary">
               Hi, I am a Front End Developer who loves building beautiful, responsive, and functional websites.
             </p>
 
@@ -55,8 +55,8 @@ export const FooterWrapper = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-100 py-3 text-center">
-          <p className="text-sm text-gray-500">© {new Date().getFullYear()} Ahmad Januar A. All rights reserved.</p>
+        <div className="border-t border-gray-100 py-3 text-center ">
+          <p className="text-sm text-gray-500 dark:text-textDarkSecondary">© {new Date().getFullYear()} Ahmad Januar A. All rights reserved.</p>
         </div>
       </div>
     </footer>

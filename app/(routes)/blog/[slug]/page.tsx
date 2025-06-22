@@ -1,13 +1,12 @@
 import { ArticleReactionWrapper } from "@/components/ArticleReactionWrapper"
 import { CrossLine } from "@/components/CrossLine"
+import MDXContent from "@/components/MDXContent"
 import { NewsLetterSection } from "@/components/ui/NewsLetterSection"
 import { getAllPosts, getPostBySlug } from "@/lib/mdx"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { PiCalendarBlank } from "react-icons/pi"
-import { LatesBlog } from "./LatestBlog"
-import dynamic from "next/dynamic"
-import MDXContent from "@/components/MDXContent"
+import { LatestBlog } from "./LatestBlog"
 
 export const revalidate = 3600
 
@@ -121,7 +120,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             </div>
           </div>
           <div className="space-y-16">
-            <LatesBlog latestPosts={latestPosts} />
+            <LatestBlog latestPosts={latestPosts} />
           </div>
         </>
       )}

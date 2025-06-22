@@ -10,15 +10,15 @@ gsap.registerPlugin(ScrollTrigger)
 const ExperienceCard = ({ company, period, role, description }: ExperienceItem) => (
   <div className="grid w-full grid-cols-1 items-start gap-4 md:grid-cols-[2fr,80px,4fr]">
     <div className="text-left">
-      <h3 className="text-lg font-semibold text-textPrimary">{company}</h3>
-      <p className="mt-1 text-sm text-textSecondary">{period}</p>
+      <h3 className="text-lg font-semibold text-textPrimary dark:text-textDarkPrimary">{company}</h3>
+      <p className="mt-1 text-sm text-textSecondary dark:text-textDarkSecondary">{period}</p>
     </div>
     <div className="relative hidden justify-center md:flex">
       <div className="h-4 w-5 opacity-0" />
     </div>
     <div className="sizeSubtitle">
-      <h4 className="mb-4 text-lg font-medium text-textPrimary">{role}</h4>
-      <div className="space-y-3 text-textSecondary">
+      <h4 className="mb-4 text-lg font-medium text-textPrimary dark:text-textDarkPrimary">{role}</h4>
+      <div className="space-y-3 text-textSecondary dark:text-textDarkSecondary">
         {description.map((desc, index) => (
           <p key={index} className="sizeSubtitle">
             {desc}
@@ -58,7 +58,7 @@ export function ExperienceSection() {
     <section className="relative w-full overflow-hidden">
       <div className="mb-12 text-center md:mb-16">
         <h2 className="border-y py-2 text-sm font-medium uppercase tracking-wider text-accentColor">Experience</h2>
-        <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b py-4 text-textPrimary md:py-5 lg:text-[40px]">
+        <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b py-4 text-textPrimary dark:text-textDarkPrimary md:py-5 lg:text-[40px]">
           <h1 className="max-w-sm text-2xl md:text-3xl lg:text-[40px]">Chronology of my work history</h1>
         </div>
       </div>

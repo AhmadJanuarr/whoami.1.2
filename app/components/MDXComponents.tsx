@@ -44,7 +44,7 @@ const createList = (Tag: "ul" | "ol", className: string) => {
 
 const createListItem = () => {
   return ({ children, ...props }: React.LiHTMLAttributes<HTMLLIElement>) => (
-    <li className="sizeSubtitle mb-4 text-textSecondary" {...props}>
+    <li className="sizeSubtitle mb-4 text-textSecondary dark:text-textDarkSecondary" {...props}>
       {children}
     </li>
   )
@@ -62,7 +62,7 @@ const createParagraph = () => {
     return hasBlock ? (
       <div className="my-4">{children}</div>
     ) : (
-      <p className="sizeSubtitle mb-6 text-textSecondary" {...props}>
+      <p className="sizeSubtitle mb-6 text-textSecondary dark:text-textDarkSecondary" {...props}>
         {children}
       </p>
     )
@@ -108,10 +108,10 @@ const createPre = () => {
 
 // === Exported MDX Components ===
 export const components: MDXComponents = {
-  h1: createHeading("h1", "mb-6 mt-3 text-balance text-4xl font-medium leading-8 text-textPrimary"),
-  h2: createHeading("h2", "mb-6 mt-8 text-balance text-2xl font-medium leading-8 text-textPrimary md:text-3xl"),
-  h3: createHeading("h3", "mb-6 mt-3 text-balance text-xl font-medium leading-8 text-textPrimary md:text-2xl"),
-  h4: createHeading("h4", "mb-6 mt-3 text-balance text-lg font-medium leading-8 text-textPrimary md:text-xl"),
+  h1: createHeading("h1", "mb-6 mt-3 text-balance text-4xl font-medium leading-8 text-textPrimary dark:text-textDarkPrimary"),
+  h2: createHeading("h2", "mb-6 mt-8 text-balance text-2xl font-medium leading-8 text-textPrimary md:text-3xl dark:text-textDarkPrimary"),
+  h3: createHeading("h3", "mb-6 mt-3 text-balance text-xl font-medium leading-8 text-textPrimary md:text-2xl dark:text-textDarkPrimary"),
+  h4: createHeading("h4", "mb-6 mt-3 text-balance text-lg font-medium leading-8 text-textPrimary md:text-xl dark:text-textDarkPrimary"),
 
   p: createParagraph(),
   a: createAnchor(),

@@ -11,7 +11,7 @@ export function NewsLetterSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative my-20 flex w-full flex-col items-center justify-start overflow-hidden bg-[#3C3C3F] px-10 lg:rounded-3xl"
+      className="relative my-20 flex w-full flex-col items-center justify-start overflow-hidden border border-borderPrimary bg-[#3C3C3F] px-10 dark:bg-bgDarkSecondary lg:rounded-3xl"
     >
       <CrossLine />
       <motion.div

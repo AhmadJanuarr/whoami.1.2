@@ -9,7 +9,9 @@ export default function Toolbox() {
       <div className="mb-16 text-center">
         <div className="h-28 w-full border-b lg:h-14" />
         <div className="mx-auto flex w-full items-center justify-center border-y py-5">
-          <h1 className="sizeTitle max-w-xl font-semibold text-textPrimary lg:text-[40px]">Hardware && software I keep in my toolbox.</h1>
+          <h1 className="sizeTitle max-w-xl font-semibold text-textPrimary dark:text-textDarkPrimary lg:text-[40px]">
+            Hardware && software I keep in my toolbox.
+          </h1>
         </div>
       </div>
       <div className="w-full">

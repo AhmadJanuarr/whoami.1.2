@@ -8,22 +8,21 @@ import { PiBookmarkSimple, PiHeartStraight, PiShareFat } from "react-icons/pi"
 const ReactionButton = ({
   icon,
   text,
-  onClick,
   isActive,
-  isLoading,
+  onClick,
 }: {
   icon: React.ReactNode
   text: string
-  onClick: () => void
   isActive: boolean
   isLoading?: boolean
+  onClick: () => void
 }) => {
   return (
     <motion.button
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`relative flex items-center gap-2 rounded-full border bg-[#F1F5F9] px-4 py-2 transition-all hover:bg-backgroundPrimary ${
+      className={`relative flex items-center gap-2 rounded-full border bg-[#F1F5F9] px-4 py-2 transition-all hover:bg-backgroundPrimary dark:bg-bgDarkSecondary ${
         isActive ? "border-primary" : ""
       }`}
     >
@@ -158,7 +157,7 @@ export const ArticleReactionWrapper = ({ postId }: { postId: string }) => {
                 }}
                 transition={{ duration: 0.3 }}
               >
-                <PiBookmarkSimple size={15} />
+                <PiBookmarkSimple size={15} className="dark:text-textDarkPrimary" />
               </motion.div>
             }
             text={bookmarked ? "Saved" : "Save"}
@@ -168,7 +167,7 @@ export const ArticleReactionWrapper = ({ postId }: { postId: string }) => {
           <ReactionButton
             icon={
               <motion.div whileHover={{ rotate: 15 }} transition={{ duration: 0.2 }}>
-                <PiShareFat size={15} />
+                <PiShareFat size={15} className="dark:text-textDarkPrimary" />
               </motion.div>
             }
             text="Share"

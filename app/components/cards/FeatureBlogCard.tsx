@@ -21,7 +21,7 @@ export const FeatureBlogCard = ({ blog }: { blog: Post }) => {
 
   return (
     <motion.div key={blog.slug} variants={cardVariants}>
-      <SpotlightCard className="group flex h-full flex-col overflow-hidden" spotlightColor="rgba(61, 144, 215, 0.2)">
+      <SpotlightCard className="group flex h-full flex-col overflow-hidden dark:bg-bgDarkSecondary" spotlightColor="rgba(61, 144, 215, 0.2)">
         <Link href={`/blog/${blog.slug}`} className="relative h-64 w-full overflow-hidden rounded-lg">
           <Image
             src={blog.coverImage}
@@ -36,10 +36,12 @@ export const FeatureBlogCard = ({ blog }: { blog: Post }) => {
         <div className="sizeSubtitle mt-6 flex flex-col gap-4 p-2">
           <div className="flex items-center gap-3">
             <span className="rounded-full py-1 text-xs font-medium">{category}</span>
-            <span className="text-xs font-normal text-textSecondary">{blog.date}</span>
+            <span className="text-xs font-normal text-textSecondary dark:text-textDarkSecondary">{blog.date}</span>
           </div>
-          <h2 className="group-hover:text-primary text-xl font-semibold text-textPrimary transition-colors duration-300 xl:text-2xl">{blog.title}</h2>
-          <p className="line-clamp-3 font-normal text-textSecondary">{blog.summary}</p>
+          <h2 className="group-hover:text-primary text-xl font-semibold text-textPrimary transition-colors duration-300 dark:text-textDarkPrimary xl:text-2xl">
+            {blog.title}
+          </h2>
+          <p className="line-clamp-3 font-normal text-textSecondary dark:text-textDarkSecondary dark:opacity-80 ">{blog.summary}</p>
         </div>
       </SpotlightCard>
     </motion.div>

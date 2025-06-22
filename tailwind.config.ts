@@ -47,6 +47,10 @@ const config: Config = {
         borderPrimary: "#F0F0F0",
         primaryColor: "#3C9EE7",
         accentColor: "#4F46E5",
+        bgDarkPrimary: "#17223B",
+        bgDarkSecondary: "#273042",
+        textDarkPrimary: "#F5F5F5",
+        textDarkSecondary: "#D1D5DB",
       },
       fontFamily: {
         inter: ["var(--font-inter)"],

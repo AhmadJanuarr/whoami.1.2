@@ -6,8 +6,8 @@ import Image from "next/image"
 const FavoriteSongItem = () => (
   <GridCard className="flex min-h-[200px] flex-col p-4 md:min-h-[250px] lg:row-span-2 lg:min-h-[300px]">
     <div className="sizeSubtitle flex flex-col gap-2">
-      <h1 className="font-regular text-lg">Favorite song list</h1>
-      <p className="text-base leading-relaxed text-textSecondary">
+      <h1 className="font-regular text-lg dark:text-textDarkPrimary">Favorite song list</h1>
+      <p className="text-base leading-relaxed text-textSecondary dark:text-textDarkSecondary">
         Currently I am liking the song <span className="font-semibold">Novo Amor</span> to accompany me during my productivity.
       </p>
     </div>
@@ -28,8 +28,8 @@ const FavoriteSongItem = () => (
 const PhotographyItem = () => (
   <GridCard className="flex min-h-[150px] flex-col md:min-h-[180px] lg:col-span-3 lg:min-h-[150px]">
     <div className="sizeSubtitle flex flex-col gap-2 p-4">
-      <h1 className="font-regular text-lg">Capture the Quiet Moments</h1>
-      <p className="text-base leading-relaxed text-textSecondary">
+      <h1 className="font-regular text-lg dark:text-textDarkPrimary">Capture the Quiet Moments</h1>
+      <p className="text-base leading-relaxed text-textSecondary dark:text-textDarkSecondary">
         Whether it's morning light in my room or walking home in the rain, I love capturing moments through my lens.
       </p>
       <div className="mt-2 flex gap-2">
@@ -57,8 +57,8 @@ const BooksItem = () => (
   <GridCard className="flex min-h-[200px] flex-col bg-[url('/assets/elements/element-dots.png')] bg-cover md:min-h-[250px] lg:col-span-3 lg:col-start-2 lg:row-span-2 lg:row-start-2 lg:min-h-[300px]">
     <div className="relative flex w-full flex-col p-6">
       <div className="sizeSubtitle mb-4 flex items-center justify-between">
-        <h1 className="font-regular text-lg">A Page a Day Keeps the Noise Away</h1>
-        <span className="text-textSecondary">5 Books</span>
+        <h1 className="font-regular text-lg dark:text-textDarkPrimary">A Page a Day Keeps the Noise Away</h1>
+        <span className="text-textSecondary dark:text-textDarkSecondary">5 Books</span>
       </div>
 
       <div className="relative h-[200px] md:h-[300px]">
@@ -112,8 +112,8 @@ const ReadingProgressItem = () => (
   <GridCard className="flex min-h-[150px] flex-col p-6 md:min-h-[180px] lg:col-start-5 lg:row-span-3 lg:row-start-1 lg:min-h-[450px]">
     <div className="relative flex h-full flex-col">
       <div className="sizeSubtitle mb-8">
-        <h3 className="font-regular text-lg tracking-tight text-textPrimary">Read One Doc a Day</h3>
-        <p className="mt-2 text-base leading-relaxed text-textSecondary">Simple steps toward continuous learning</p>
+        <h3 className="font-regular text-lg tracking-tight text-textPrimary dark:text-textDarkPrimary">Read One Doc a Day</h3>
+        <p className="mt-2 text-base leading-relaxed text-textSecondary dark:text-textDarkSecondary">Simple steps toward continuous learning</p>
       </div>
 
       <div className="mt-6 flex flex-col gap-5">
@@ -157,7 +157,7 @@ const ReadingProgressItem = () => (
 const DailyRoutineItem = () => (
   <GridCard className="flex min-h-[150px] flex-col gap-4 p-6 md:min-h-[180px] lg:row-start-3 lg:min-h-[150px]">
     <div className="flex flex-col gap-4">
-      <h3 className="text-lg font-medium text-gray-700">Daily Routine</h3>
+      <h3 className="text-lg font-medium text-gray-700 dark:text-textDarkPrimary">Daily Routine</h3>
       <div>
         {[
           { emoji: "☀️", text: "Wake up at 5:30 AM" },
@@ -168,7 +168,7 @@ const DailyRoutineItem = () => (
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100/80">
               <span className="text-base">{routine.emoji}</span>
             </div>
-            <p className="text-sm text-gray-600">{routine.text}</p>
+            <p className="text-sm text-gray-600 dark:text-textDarkSecondary">{routine.text}</p>
           </div>
         ))}
       </div>

@@ -22,7 +22,7 @@ export const FeatureBlogCard = ({ blog }: { blog: Post }) => {
   return (
     <motion.div key={blog.slug} variants={cardVariants}>
       <SpotlightCard className="group flex h-full flex-col overflow-hidden dark:bg-bgDarkSecondary" spotlightColor="rgba(61, 144, 215, 0.2)">
-        <Link href={`/blog/${blog.slug}`} className="relative h-64 w-full overflow-hidden rounded-lg">
+        <Link href={`/blogs/${blog.slug}`} className="relative h-64 w-full overflow-hidden rounded-lg">
           <Image
             src={blog.coverImage}
             alt={blog.title}

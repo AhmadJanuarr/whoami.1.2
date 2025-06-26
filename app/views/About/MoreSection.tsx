@@ -1,6 +1,7 @@
 import { GridCard } from "@/components/cards/GridCard"
-import { Suspense } from "react"
 import Image from "next/image"
+import { Suspense } from "react"
+import { PiClock, PiClockAfternoon, PiCode, PiSunBold } from "react-icons/pi"
 
 // Grid Card Components
 const FavoriteSongItem = () => (
@@ -34,9 +35,9 @@ const PhotographyItem = () => (
       </p>
       <div className="mt-2 flex gap-2">
         {[
-          { src: "https://images.unsplash.com/photo-1514907283155-ea5f4094c70c", alt: "morning light" },
-          { src: "https://images.unsplash.com/photo-1519692933481-e162a57d6721", alt: "rainy day" },
-          { src: "https://images.unsplash.com/photo-1483982258113-b72862e6cff6", alt: "quiet moment" },
+          { src: "/assets/images/home-1.jpg", alt: "morning light" },
+          { src: "/assets/images/home-2.jpg", alt: "rainy day" },
+          { src: "/assets/images/home-3.jpg", alt: "quiet moment" },
         ].map((img, index) => (
           <Image
             key={index}
@@ -127,8 +128,8 @@ const ReadingProgressItem = () => (
               <span className="text-sm font-medium">{item.number}</span>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-700">{item.title}</p>
-              <p className="mt-1 text-xs text-gray-400">{item.status}</p>
+              <p className="text-sm font-medium text-gray-700 dark:text-textDarkPrimary">{item.title}</p>
+              <p className="mt-1 text-xs text-gray-400 dark:text-textDarkSecondary">{item.status}</p>
             </div>
             <div className="absolute right-4 text-gray-300 transition-colors group-hover:text-gray-400">
               <span className="text-xs">→</span>
@@ -139,7 +140,7 @@ const ReadingProgressItem = () => (
 
       <div className="mt-auto">
         <div className="mt-8 space-y-3">
-          <div className="flex items-center justify-between text-xs text-gray-600">
+          <div className="flex items-center justify-between text-xs text-gray-600 dark:text-textDarkSecondary">
             <span>Weekly Progress</span>
             <span>3/5 docs</span>
           </div>
@@ -160,14 +161,14 @@ const DailyRoutineItem = () => (
       <h3 className="text-lg font-medium text-gray-700 dark:text-textDarkPrimary">Daily Routine</h3>
       <div>
         {[
-          { emoji: "☀️", text: "Wake up at 5:30 AM" },
-          { emoji: "💻", text: "Code & Learn until 4 PM" },
-          { emoji: "🏃", text: "Exercise at 5 PM" },
+          { emoji: <PiSunBold className="size-6" />, text: "Wake up at 5:30 AM" },
+          { emoji: <PiCode className="size-6" />, text: "Code & Learn until 4 PM" },
+          { emoji: <PiClockAfternoon className="size-6" />, text: "Exercise at 5 PM" },
         ].map((routine, index) => (
           <div key={index} className="group flex items-center gap-4 rounded-lg p-2 transition-all hover:bg-gray-50">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100/80">
-              <span className="text-base">{routine.emoji}</span>
-            </div>
+            <span className="flex items-center justify-center rounded-lg bg-[#3C3C3F] p-2 text-textDarkPrimary dark:bg-backgroundPrimary dark:text-textPrimary">
+              {routine.emoji}
+            </span>
             <p className="text-sm text-gray-600 dark:text-textDarkSecondary">{routine.text}</p>
           </div>
         ))}
@@ -183,7 +184,7 @@ export function MoreSection() {
       <div className="my-8 text-center md:my-12 lg:my-16">
         <h2 className="border-y py-2 text-sm font-medium uppercase tracking-wider text-accentColor">More</h2>
         <div className="sizeTitle mx-auto flex w-full items-center justify-center border-b py-4 text-textPrimary md:py-5 lg:text-[40px]">
-          <h1 className="max-w-sm text-xl md:text-2xl lg:text-3xl">It's part of my daily life.</h1>
+          <h1 className="max-w-sm text-xl dark:text-textDarkPrimary md:text-2xl lg:text-3xl">It's part of my daily life.</h1>
         </div>
       </div>
 

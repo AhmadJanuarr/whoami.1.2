@@ -15,7 +15,7 @@ export const HeaderWrapper = () => {
   const NAV_ITEMS = [
     { label: "Home", onClick: () => router.push("/"), isActive: pathname === "/" },
     { label: "About", onClick: () => router.push("/about"), isActive: pathname === "/about" },
-    { label: "Blog", onClick: () => router.push("/blog"), isActive: pathname === "/blog" },
+    { label: "Blogs", onClick: () => router.push("/blogs"), isActive: pathname === "/blogs" },
     { label: "Projects", onClick: () => router.push("/projects"), isActive: pathname === "/projects" },
     { label: "Toolbox", onClick: () => router.push("/toolbox"), isActive: pathname === "/toolbox" },
   ]

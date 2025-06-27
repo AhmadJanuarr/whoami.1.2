@@ -58,8 +58,8 @@ const BooksItem = () => (
   <GridCard className="flex min-h-[200px] flex-col bg-[url('/assets/elements/element-dots.png')] bg-cover md:min-h-[250px] lg:col-span-3 lg:col-start-2 lg:row-span-2 lg:row-start-2 lg:min-h-[300px]">
     <div className="relative flex w-full flex-col p-6">
       <div className="sizeSubtitle mb-4 flex items-center justify-between">
-        <h1 className="font-regular text-lg dark:text-textDarkPrimary">A Page a Day Keeps the Noise Away</h1>
-        <span className="text-textSecondary dark:text-textDarkSecondary">5 Books</span>
+        <h1 className="font-regular text-lg dark:text-textPrimary ">A Page a Day Keeps the Noise Away</h1>
+        <span className="text-textSecondary">5 Books</span>
       </div>
 
       <div className="relative h-[200px] md:h-[300px]">

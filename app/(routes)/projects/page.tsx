@@ -16,7 +16,7 @@ const ProjectCard = ({ image, title, description, href }: ProjectProps) => {
     >
       <FollowerPointerCard title="View Project">
         <Link href={href} target="_blank" rel="noopener noreferrer">
-          <div className="relative flex h-[250px] items-center justify-center overflow-hidden rounded-xl border border-borderPrimary bg-[#FCFCFC] p-4 md:h-[500px] md:p-8 lg:h-[700px] lg:p-16">
+          <div className="relative flex h-[250px] items-center justify-center overflow-hidden rounded-xl border border-borderPrimary bg-[#FCFCFC] p-4 dark:bg-bgDarkSecondary md:h-[500px] md:p-8 lg:h-[700px] lg:p-16">
             <img src={image} alt={title} className="h-auto w-full rounded-xl border border-borderPrimary object-cover object-center" />
           </div>
         </Link>

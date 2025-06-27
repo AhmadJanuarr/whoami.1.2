@@ -16,7 +16,7 @@ export const PROJECTS: ProjectProps[] = [
     title: "Dapur Tradisional",
     description:
       "A website for a traditional Indonesian restaurant that offers a wide range of traditional Indonesian dishes. The website is built with Reactjs for the frontend, Tailwind CSS for the styling expressjs for the backend, and PostgreSQL for the database.",
-    image: "/assets/projects/project-dapur.jpg",
+    image: "/assets/projects/project-dapur-tradisional.webp",
     author: "Ahmad Januar",
     authorAvatar: "/assets/images/profile-2.jpg",
     date: "March 15, 2024",
@@ -37,15 +37,15 @@ export const PROJECTS: ProjectProps[] = [
   },
   {
     id: 3,
-    title: "Amara Ebook",
+    title: "Magic Image",
     description:
-      "An ebook platform that allows users to read, bookmark and take notes on digital books. Features include progress tracking, highlights, and a personalized reading experience. Built with Next.js and integrated with a digital rights management system.",
-    image: "/assets/projects/project-ebook.jpg",
+      "Magic image is a website convert image to webp format and download it. The website is built with Next.js for the frontend and integrated with the OpenAI API for the image generation.",
+    image: "/assets/projects/project-convert.webp",
     author: "Ahmad Januar",
     authorAvatar: "/assets/images/profile-2.jpg",
     date: "March 8, 2024",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    href: "#",
+    href: "https://magic-image-sigma.vercel.app/",
   },
   {
     id: 4,

@@ -6,6 +6,15 @@ export interface ExperienceItem {
 }
 export const EXPERIENCE_LIST: ExperienceItem[] = [
   {
+    company: "PT Silent Cicada Tech",
+    period: "July 2025 - October 2025",
+    role: "Digital Marketing",
+    description: [
+      "Developed an SEO-optimized company website with Next.js and created brand-aligned promotional materials using Figma/Canva.",
+      "Executed digital marketing campaigns, managed SEO and Google Business Profile, and maintained social media presence in collaboration with the sales team.",
+    ],
+  },
+  {
     company: "PT Sema Information Technology Services",
     period: "2023 - 2024",
     role: "Freelance Projects",
